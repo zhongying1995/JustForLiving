@@ -7,7 +7,8 @@ end
 local function main()
 	print 'hello loli!'
 	print ('package.path = ', package.path)
-	print('hello 一中')
+	print('hello 一中11231233')
+	require("War3Library._init")
 end
 
 main()

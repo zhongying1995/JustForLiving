@@ -38,12 +38,12 @@ function runtime.error_handle(msg)
 	base.error_handle(msg)
 end
 
---测试版本和发布版本的脚本路径
+--测试版本和发布版本的脚本路径，这个文件的代码不是在本地的，修改后需要打包
 if base.release then
 	package.path = package.path .. [[;Poi\]] .. base.version .. [[\?.lua;scripts\?.lua]]
 	print('当前版本为 发行版')
 else
-	package.path = package.path .. [[;G:\War3\Warcraft3\War3Library\?.lua]]
+	package.path = [[G:\War3\Warcraft3\?.lua;G:\War3\Warcraft3\War3Library\?.lua;]] .. package.path
 	print('当前版本为 测试版')
 end
 
