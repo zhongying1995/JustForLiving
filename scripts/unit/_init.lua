@@ -1,1 +1,1 @@
-require 'unit.invade'
+require 'unit.invade._init'

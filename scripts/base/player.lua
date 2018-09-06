@@ -1,7 +1,7 @@
 
 local player = Rount.player
 
-
+player.force = {}
 player.force[1] = {
     [1] = player[1],
     [2] = player[2],
@@ -30,8 +30,8 @@ local function alliance(  )
             player.force[1][i]:set_alliance_ally(player.force[1][j])
         end
         --与玩家12敌对
-        player.force[1][i]:set_alliance_ally(player.force[1][12], false)
-        player.force[1][12]:set_alliance_ally(player.force[1][1], false)
+        player.force[1][i]:set_alliance_ally(player.force[1]['enemy'], false)
+        player.force[1]['enemy']:set_alliance_ally(player.force[1][1], false)
         
         --与玩家16普通结盟
         player.force[1][i]:set_alliance(ac.player[16], 0, true)
