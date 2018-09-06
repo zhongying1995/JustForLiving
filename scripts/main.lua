@@ -17,6 +17,7 @@ local function main()
 	require 'unit._init'
 	require 'item._init'
 	require 'rule._init'
+	require 'test'
 end
 
 main()
