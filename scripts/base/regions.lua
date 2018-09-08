@@ -9,5 +9,5 @@ for _, rect in pairs(Map_Rects['海区域']) do
 end
 
 Map_Regions['海区域'] = temp_region
-local Region = Rount.regionaaa
+
 return Map_Regions

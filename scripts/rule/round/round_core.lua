@@ -59,5 +59,8 @@ function mt:init(  )
     self:init_default_round()
 end
 
+ac.game:event '游戏-开始'(function (  )
+    Round_core:init()
+end)
 
 return Round_core
