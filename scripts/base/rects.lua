@@ -1,8 +1,8 @@
 local Rect = Rount.rect
 
-local Map_Rects = {}
+local Map_rects = {}
 
-Map_Rects['进攻怪物出生点'] = {
+Map_rects['进攻怪物出生点'] = {
     Rect.j_rect('BirthPoint_1'),
     Rect.j_rect('BirthPoint_2'),
     Rect.j_rect('BirthPoint_3'),
@@ -10,11 +10,11 @@ Map_Rects['进攻怪物出生点'] = {
     Rect.j_rect('BirthPoint_5'),
 }
 
-Map_Rects['战斗区域'] = {
+Map_rects['战斗区域'] = {
     Rect.j_rect('Battlefield'),
 }
 
-Map_Rects['海区域'] = {
+Map_rects['海区域'] = {
     Rect.j_rect('Sea_0'),
     Rect.j_rect('Sea_1'),
     Rect.j_rect('Sea_2'),
@@ -63,4 +63,8 @@ Map_Rects['海区域'] = {
     Rect.j_rect('Sea_45'),
 }
 
-return Map_Rects
+Map_rects['默认视野'] = {
+    Rect.j_rect('DefaultFog'),
+}
+
+return Map_rects

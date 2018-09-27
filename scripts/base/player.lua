@@ -38,7 +38,6 @@ local function alliance(  )
     Player.force[2][1]:set_team(2)
     Player.force[2][1]:set_alliance(ac.player[16], 0, true)
     ac.player[16]:set_alliance(Player.force[2][1], 0, true)
-    print('结盟完毕')
 end
 
 

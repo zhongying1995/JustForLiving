@@ -1,0 +1,1 @@
+require 'rule.model.game_model_dialog'

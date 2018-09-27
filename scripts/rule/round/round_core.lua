@@ -20,9 +20,14 @@ local function switch_round(self, finish_round)
     local type = finish_round and finish_round.type
 
     if type == '普通回合' then
-        self.current_round = Normal_round
+        local round_index = finish_round.index
+        if round_index % 2 == 0 then
+            self.current_round = Boss_round
+        else
+            self.current_round = Normal_round
+        end
     elseif type == 'boss回合' then
-
+        self.current_round = Normal_round
     else
         log.error('未知的回合触发回合调度算法！请检查！')
         return
@@ -59,7 +64,7 @@ function mt:init(  )
     self:init_default_round()
 end
 
-ac.game:event '游戏-开始'(function (  )
+ac.game:event '游戏-回合逻辑开始'(function ()
     Round_core:init()
 end)
 

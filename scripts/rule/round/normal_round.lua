@@ -83,12 +83,13 @@ end
 
 --获取一个进击的目标
 local function get_attack_hero(  )
-    
+    --临时方案
+    return ac.player[1].hero
 end
 
 local function create_attack_unit( unit_id, point )
     -- local u = Player.force[2][1]:create_unit(unit_id, point, math.random(0,360))
-    local u = ac.player(12):create_unit(unit_id, point, math.random(0,360))
+    local u = ac.player[12]:create_unit(unit_id, point, math.random(0,360))
     u._is_invade_unit = true
     local target = get_attack_hero()
     if not target then
@@ -138,7 +139,8 @@ function mt:start(  )
     self.invade_unit_counts = self:create_invades()
     self.timerdialog:set_time(self.creep_datas.clear_time)
         :set_on_click_listener(function (  )
-            self:fail_clear_invades()
+            -- self:fail_clear_invades()
+            self:finish( false )
         end)
         :show()
         :run()
@@ -146,6 +148,7 @@ function mt:start(  )
     self.invade_unit_dead_trg = ac.game:event '单位-死亡'(function ( trg, unit, killer )
         if unit._is_invade_unit then
             self.invade_unit_dead_counts = self.invade_unit_dead_counts + 1
+            print(self.invade_unit_dead_counts, self.invade_unit_counts)
             if self.invade_unit_dead_counts >= self.invade_unit_counts then
                 self:finish()
             end
@@ -159,13 +162,18 @@ function mt:create_round_reward(  )
     Player.self:send_msg('国家奖励你一个女朋友，快去领取吧！')
 end
 
-function mt:finish(  )
+function mt:finish( is_reward )
     self.state = '结束'
     self.timerdialog:show(false)
     if self.invade_unit_dead_trg then
         self.invade_unit_dead_trg:remove()
     end
-    self:create_round_reward()
+    if is_reward == nil then
+        is_reward = true
+    end
+    if is_reward then
+        self:create_round_reward()
+    end
     --回合结束，应该向上交出回合处理权
     ac.game:event_notify( '回合-结束-上交权限', self)
 end

@@ -1,0 +1,1 @@
+require 'rule.choose_hero.choose_hero'

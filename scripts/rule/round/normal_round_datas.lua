@@ -14,7 +14,7 @@ mt[1] = {
     msg = '正宗阳澄湖大闸蟹来袭，不要争不要抢，人人有份人人有份！',
     atk = 15,
     life = 56,
-    count = 80,
+    count = 30,
     prepare_time = 20,
     clear_time = 100,
 }
