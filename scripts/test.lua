@@ -1,5 +1,9 @@
 local jass = require 'jass.common'
 local japi = require 'jass.japi'
+local Dialog = Rount.dialog
+local Player = Rount.player
+local Game_degree = require 'rule.model.game_degree'
+local Game_model = require 'rule.model.game_model'
 
 local function check_multiboard(  )
     local Multiboard = Rount.multiboard
@@ -34,21 +38,21 @@ local function check_region(  )
     end)
 end
 
-function check_fogmodifier(  )
+local function check_fogmodifier(  )
     local Fogmodifier = Rount.fogmodifier
     local Rect = Rount.rect
     local rect = Rect:new(0,0,1000,1000)
     local fog = Fogmodifier:new(ac.player[2], rect)
 end
 
-function check_lightning( u1, u2)
+local function check_lightning( u1, u2)
     local Lightning = Rount.lightning
     local ln = Lightning:new('SPLK', u1, u2, 20, 80)
     ln:set_color(0, 0, 100)
     ln:fade(-1)
 end
 
-function check_texttag(u)
+local function check_texttag(u)
     local Texttag = Rount.texttag
     local tt = Texttag:new{
         text = '+666!',
@@ -63,7 +67,7 @@ function check_texttag(u)
     tt:jump(0.5, -0.1)
 end
 
-function check_heal(u)
+local function check_heal(u)
     ac.wait(2000, function()
         print('8秒到，开始治疗')
         u:heal({
@@ -79,7 +83,7 @@ function check_heal(u)
     end)
 end
 
-function check_selector(u1)
+local function check_selector(u1)
     print('检查 selector模块')
     for _, u in ac.selector()
 		: in_range(u1, 800)
@@ -89,7 +93,7 @@ function check_selector(u1)
 	end
 end
 
-function check_effect(u)
+local function check_effect(u)
     local model = [[Abilities\Spells\Human\MagicSentry\MagicSentryCaster.mdl]]
     -- local ef1 = u:add_effect(model, 'overhead')
     local ef2 = u:get_point():add_effect(model)
@@ -99,7 +103,7 @@ function check_effect(u)
     end)
 end
 
-function check_buff(u)
+local function check_buff(u)
     local mt = ac.buff['超生命体']{
         on_add = function(self)
             local unit = self.target
@@ -135,7 +139,7 @@ function check_buff(u)
     -- end)
 end
 
-function check_skill(u)
+local function check_skill(u)
     local mt = ac.skill['牛逼的风暴锤']{
         war3_id = 'AHwe',
         damage = function(self)
@@ -171,7 +175,7 @@ function check_skill(u)
     end)
 end
 
-function check_item(u)
+local function check_item(u)
     local mt = ac.item['风暴之锤']{
         war3_id = 'bspd',
         life = 1000,
@@ -195,7 +199,7 @@ function check_item(u)
     end)
 end
 
-function check_attribute(u)
+local function check_attribute(u)
     local max_life = u:get_max_life()
     local max_mana = u:get_max_mana()
     print(('%s最大生命：%s，最大魔法:%s'):format(u:get_name(), max_life, max_mana))
@@ -229,7 +233,7 @@ function check_attribute(u)
 
 end
 
-function check_damage(u)
+local function check_damage(u)
     u:damage{
         damage = 100,
         magical = true,
@@ -237,7 +241,7 @@ function check_damage(u)
     }
 end
 
-function check_hero()
+local function check_hero()
 
     local mt = ac.hero['山丘之王']{
         war3_id = 'Hmkg',
@@ -262,7 +266,7 @@ function check_hero()
 
 end
 
-function check_mover(u, u2)
+local function check_mover(u, u2)
     --[[
     ac.mover.line{
         source = u,
@@ -285,7 +289,48 @@ function check_mover(u, u2)
 	}
 end
 
-function test_model()
+local function check_dialog()
+    local degree_dialog = {
+
+        title = '请选择游戏难度',
+    
+        buttons = {
+            [1] = {
+                title = '小白过家家级',
+                key = 'a',
+                on_click = function(dialog, player)
+                    print(player:tostring(), '点击了 小白过家家级 难度')
+                    
+                end,
+            },
+            [2] = {
+                title = '老鸟各自飞级',
+                key = nil,
+                on_click = function(dialog, player)
+                    print(player:tostring(), '点击了 老鸟各自飞级 难度')
+                    
+                end,
+            },
+            [3] = {
+                title = '老鸟劝退级',
+                key = nil,
+                on_click = function(dialog, player)
+                    print(player:tostring(), '点击了 老鸟劝退级 难度')
+                    
+                end,
+            },
+        },
+    
+    }
+    local dialog = Dialog:new(degree_dialog)
+    dialog:show(ac.player[2])
+        :show(ac.player[2])
+        :set_life(15)
+        :set_default_button(dialog.buttons[3])
+        :run()
+end
+
+local function test_model()
     -- jass.FogEnable(false)
     -- jass.FogMaskEnable(false)
     -- ac.player[16]:set_alliance(ac.player[1], 6, true)
@@ -326,6 +371,7 @@ function test_model()
         -- end)
         -- check_hero()
         -- check_mover(u1, u2)
+        -- check_dialog()
     end)
 end
 
@@ -333,7 +379,7 @@ if not base.release then
     test_model()
     ac.wait(3000, function()
         print('选择游戏难度')
-        ac.game:event_notify('游戏-选择难度')
+        --ac.game:event_notify('游戏-选择难度')
     end)
     
 end
