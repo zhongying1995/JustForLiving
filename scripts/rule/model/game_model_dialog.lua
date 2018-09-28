@@ -15,9 +15,21 @@ local function choose_model(model, player)
     Game_model[model](player)
 end
 
+local function close_dialog(dialog)
+    if dialog and dialog.type == 'dialog' then
+        dialog:remove()
+    end
+end
+
 local function open_model_dialog(player)
     local dialog = Dialog:new(model_dialog)
     dialog:show(player)
+        :set_life(10)
+        :run()
+end
+
+local function end_choose_game_model()
+    ac.game:event_notify('游戏-选择模式结束')
 end
 
 
@@ -33,6 +45,8 @@ degree_dialog = {
                 print(player:tostring(), '点击了 小白过家家级 难度')
                 choose_degree('小白过家家级', player)
                 choose_model('生存模式', player)
+                close_dialog(dialog)
+                end_choose_game_model()
             end,
         },
         [2] = {
@@ -41,6 +55,7 @@ degree_dialog = {
             on_click = function(dialog, player)
                 print(player:tostring(), '点击了 老鸟各自飞级 难度')
                 choose_degree('老鸟各自飞级', player)
+                close_dialog(dialog)
                 open_model_dialog(player)
             end,
         },
@@ -50,6 +65,7 @@ degree_dialog = {
             on_click = function(dialog, player)
                 print(player:tostring(), '点击了 老鸟劝退级 难度')
                 choose_degree('老鸟劝退级', player)
+                close_dialog(dialog)
                 open_model_dialog(player)
             end,
         },
@@ -67,6 +83,8 @@ model_dialog = {
             key = nil,
             on_click = function(dialog, player)
                 choose_model('生存模式', player)
+                close_dialog(dialog)
+                end_choose_game_model()
             end,
         },
         [2] = {
@@ -74,6 +92,8 @@ model_dialog = {
             key = nil,
             on_click = function(dialog, player)
                 choose_model('防守模式', player)
+                close_dialog(dialog)
+                end_choose_game_model()
             end,
         },
         [3] = {
@@ -81,6 +101,8 @@ model_dialog = {
             key = nil,
             on_click = function(dialog, player)
                 choose_model('生存+防守模式', player)
+                close_dialog(dialog)
+                end_choose_game_model()
             end,
         },
     },
@@ -90,6 +112,8 @@ model_dialog = {
 local function open_degree_dialog(player)
     local dialog = Dialog:new(degree_dialog)
     dialog:show(player)
+        :set_life(12)
+        :run()
 end
 
 local function init()
