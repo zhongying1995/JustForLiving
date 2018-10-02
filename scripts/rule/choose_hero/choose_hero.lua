@@ -49,7 +49,7 @@ function mt:init()
                         :set_bg_color()
                         :set_title('选择英雄倒计时')
                         :set_time(self.prepare_time)
-                        :set_on_click_listener(function()
+                        :set_on_expire_listener(function()
                             self:stop()
                         end)
                         :show()
@@ -146,6 +146,7 @@ end
 
 function mt:destory()
     self:remove()
+    ac.game:event_notify('游戏-回合逻辑开始')
 end
 
 function mt:remove()
