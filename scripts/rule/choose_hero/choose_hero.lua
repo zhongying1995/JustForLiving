@@ -14,7 +14,7 @@ Choose_hero.__index = mt
 mt.timerdialog = nil
 
 --选择英雄时间
-mt.prepare_time = 40
+mt.prepare_time = 10
 
 --英雄出生的点
 mt.hero_show_point = nil
@@ -101,6 +101,9 @@ function mt:prepare_chosen_hero_trg()
             player:send_msg(hero_data.tips)
         end)
         self.choose_hero_trgs[2][i] = hero:event '单位-被双击'(function(trg, unit, player)
+            if player.hero then
+                return
+            end
             local id = hero_data.id
             self:offer_hero_to_player(id, player)
         end)
@@ -146,7 +149,7 @@ end
 
 function mt:destory()
     self:remove()
-    ac.game:event_notify('游戏-回合逻辑开始')
+    ac.game:event_notify('游戏-开始回合逻辑')
 end
 
 function mt:remove()
@@ -175,6 +178,6 @@ function mt:remove()
     end
 end
 
-ac.game:event '游戏-选择模式结束'(function()
+ac.game:event '游戏-开始选择英雄'(function()
     Choose_hero:init()
 end)
