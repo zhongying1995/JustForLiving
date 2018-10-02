@@ -29,7 +29,7 @@ local function open_model_dialog(player)
 end
 
 local function end_choose_game_model()
-    ac.game:event_notify('游戏-选择模式结束')
+    ac.game:event_notify('游戏-开始选择英雄')
 end
 
 
