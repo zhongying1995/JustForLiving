@@ -11,6 +11,9 @@ local function main()
 	print('hello 一中11231233')
 	require("War3Library._init")
 
+	--地图应用层的全局变量
+	Map_game = {}
+
 	print('加载地图应用代码')
 	require 'base._init'
 	require 'skill._init'
