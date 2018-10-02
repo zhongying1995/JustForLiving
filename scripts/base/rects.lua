@@ -67,4 +67,8 @@ Map_rects['默认视野'] = {
     Rect.j_rect('DefaultFog'),
 }
 
+Map_rects['选英雄区域'] = {
+    Rect.j_rect('ChooseHero'),
+}
+
 return Map_rects

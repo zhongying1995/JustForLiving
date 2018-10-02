@@ -61,6 +61,7 @@ rect gg_rct_BossAbyss_0= null
 rect gg_rct_BossAbyss_1= null
 rect gg_rct_RewardGold= null
 rect gg_rct_DefaultFog= null
+rect gg_rct_ChooseHero= null
 
 trigger l__library_init
 
@@ -159,6 +160,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_BossAbyss_1=Rect(4768.0, 4064.0, 4992.0, 4320.0)
     set gg_rct_RewardGold=Rect(5184.0, - 320.0, 5504.0, 96.0)
     set gg_rct_DefaultFog=Rect(- 1824.0, - 2336.0, 3168.0, 2688.0)
+    set gg_rct_ChooseHero=Rect(3488.0, - 864.0, 5632.0, 800.0)
 endfunction
 //***************************************************************************
 //*
