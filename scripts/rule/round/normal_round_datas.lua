@@ -15,7 +15,7 @@ mt[1] = {
     atk = 15,
     life = 56,
     count = 30,
-    prepare_time = 20,
+    prepare_time = 10,
     clear_time = 100,
 }
 

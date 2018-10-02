@@ -10,11 +10,21 @@ function mt:get_datas_by_index( index )
 end
 
 mt[1] = {
-    unit_id = 'H100',
+    boss_id = 'H100',
+    boss_count = 1,
+    henchmans = {
+        {
+            id = 'hfoo',
+            count = 2,
+        },
+        {
+            id = 'hsor',
+            count = 2,
+        },
+    },
     msg = '第一关boss来袭，快快逃命！',
     atk = 15,
     life = 56,
-    count = 8,
     prepare_time = 20,
     clear_time = 120,
 }
