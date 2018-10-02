@@ -10,9 +10,8 @@ Map_rects['进攻怪物出生点'] = {
     Rect.j_rect('BirthPoint_5'),
 }
 
-Map_rects['战斗区域'] = {
-    Rect.j_rect('Battlefield'),
-}
+Map_rects['战斗区域'] = Rect.j_rect('Battlefield')
+
 
 Map_rects['海区域'] = {
     Rect.j_rect('Sea_0'),
@@ -63,12 +62,10 @@ Map_rects['海区域'] = {
     Rect.j_rect('Sea_45'),
 }
 
-Map_rects['默认视野'] = {
-    Rect.j_rect('DefaultFog'),
-}
+Map_rects['默认视野'] = Rect.j_rect('DefaultFog')
 
-Map_rects['选英雄区域'] = {
-    Rect.j_rect('ChooseHero'),
-}
+
+Map_rects['选英雄区域'] = Rect.j_rect('ChooseHero')
+
 
 return Map_rects
