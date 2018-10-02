@@ -119,7 +119,7 @@ function mt:create_invades(  )
         end)
     end
     ac.wait(5*1000, function (  )
-        local rct = Map_rects['战斗区域'][1]
+        local rct = Map_rects['战斗区域']
         ac.timer(disperse_style_time, number_2, function ( t )
             create_attack_unit( unit_id, rct:get_random_point() )
         end)
