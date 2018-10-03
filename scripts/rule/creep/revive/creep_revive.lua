@@ -33,7 +33,7 @@ local function register_creep_revive(self, name, data)
         return
     end
     all_revive_creeps[war3_id] = true
-    print('register_creep_revive:', name, war3_id)
+    
     self[war3_id] = data
 
     if not data.revive_time then
@@ -50,6 +50,12 @@ setmetatable(Creep_revive, {__index = function(self, name)
 end})
 
 function Creep_revive:save_default_creep(unit)
+    local type_data = self[unit:get_id()]
+
+    if type(type_data) == 'function' then
+        Log.error(('对一个没有注册过的野怪类型[%s]，进行复活监听操作'):format(name) )
+    end
+
     local point = unit:get_point()
     local angle = unit:get_facing()
     local player = unit:get_player()
@@ -57,7 +63,6 @@ function Creep_revive:save_default_creep(unit)
         birth_angle = angle,
         birth_player = player}
 
-    local type_data = self[unit:get_id()]
 
     setmetatable(data, data)
     data.__index = type_data
@@ -76,7 +81,7 @@ function Creep_revive:save_default_creeps()
         end)
         :ipairs()
     do
-        print('save_default_creep:', u:get_name())
+        
         self:save_default_creep(u)
     end
 
