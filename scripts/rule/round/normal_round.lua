@@ -1,8 +1,8 @@
 local Round = require 'rule.round.round'
 local Creep_datas = require 'rule.round.normal_round_datas'
 local Map_rects = require 'base.rects'
-local Timerdialog = Rount.timerdialog
-local Player = Rount.player
+local Timerdialog = Router.timerdialog
+local Player = Router.player
 local table_insert = table.insert
 
 local Normal_round = {}

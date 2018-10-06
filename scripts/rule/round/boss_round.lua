@@ -1,8 +1,8 @@
 local Round = require 'rule.round.round'
 local Boss_datas = require 'rule.round.boss_round_datas'
 local Map_rects = require 'base.rects'
-local Timerdialog = Rount.timerdialog
-local Player = Rount.player
+local Timerdialog = Router.timerdialog
+local Player = Router.player
 
 local Boss_round = {}
 setmetatable(Boss_round, Boss_round)

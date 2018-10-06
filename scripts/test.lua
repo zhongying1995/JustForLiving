@@ -1,12 +1,12 @@
 local jass = require 'jass.common'
 local japi = require 'jass.japi'
-local Dialog = Rount.dialog
-local Player = Rount.player
+local Dialog = Router.dialog
+local Player = Router.player
 local Game_degree = require 'rule.model.game_degree'
 local Game_model = require 'rule.model.game_model'
 
 local function check_multiboard(  )
-    local Multiboard = Rount.multiboard
+    local Multiboard = Router.multiboard
     local mb = Multiboard:new(3,3)
         :set_title('活下去')
         :set_all_width(20)
@@ -26,8 +26,8 @@ local function check_point(  )
 end
 
 local function check_region(  )
-    local Rect = Rount.rect
-    local Region = Rount.region
+    local Rect = Router.rect
+    local Region = Router.region
     local rect = Rect:new( 0, 0, 1000, 1000)
     local region = Region:new(rect)
     region:event '区域-进入' (function ( trg, unit )
@@ -39,21 +39,21 @@ local function check_region(  )
 end
 
 local function check_fogmodifier(  )
-    local Fogmodifier = Rount.fogmodifier
-    local Rect = Rount.rect
+    local Fogmodifier = Router.fogmodifier
+    local Rect = Router.rect
     local rect = Rect:new(0,0,1000,1000)
     local fog = Fogmodifier:new(ac.player[2], rect)
 end
 
 local function check_lightning( u1, u2)
-    local Lightning = Rount.lightning
+    local Lightning = Router.lightning
     local ln = Lightning:new('SPLK', u1, u2, 20, 80)
     ln:set_color(0, 0, 100)
     ln:fade(-1)
 end
 
 local function check_texttag(u)
-    local Texttag = Rount.texttag
+    local Texttag = Router.texttag
     local tt = Texttag:new{
         text = '+666!',
         player = ac.player[1],

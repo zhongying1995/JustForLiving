@@ -1,5 +1,5 @@
-local Dialog = Rount.dialog
-local Player = Rount.player
+local Dialog = Router.dialog
+local Player = Router.player
 local Game_degree = require 'rule.model.game_degree'
 local Game_model = require 'rule.model.game_model'
 

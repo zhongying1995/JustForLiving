@@ -1,8 +1,8 @@
-local Timerdialog = Rount.timerdialog
+local Timerdialog = Router.timerdialog
 local table_insert = table.insert
-local Fogmodifier = Rount.fogmodifier
+local Fogmodifier = Router.fogmodifier
 local Map_rects = require 'base.rects'
-local Player = Rount.player
+local Player = Router.player
 
 local Choose_hero = {}
 setmetatable(Choose_hero, Choose_hero)

@@ -1,5 +1,5 @@
 
-local Player = Rount.player
+local Player = Router.player
 
 Player.force = {}
 Player.force[1] = {
