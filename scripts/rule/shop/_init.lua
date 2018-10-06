@@ -1,0 +1,1 @@
+require 'rule.shop.skill_shop._init'
