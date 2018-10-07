@@ -1,0 +1,1 @@
+require 'rule.hero.元素法师._init'
