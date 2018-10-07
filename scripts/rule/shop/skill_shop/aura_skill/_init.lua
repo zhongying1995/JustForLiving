@@ -1,0 +1,1 @@
+require 'rule.shop.skill_shop.aura_skill.耐久光环'
