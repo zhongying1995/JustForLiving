@@ -1,6 +1,6 @@
 require 'rule.model._init'
-require 'rule.choose_hero._init'
 require 'rule.round._init'
 require 'rule.creep._init'
 require 'rule.shop._init'
 require 'rule.hero._init'
+require 'rule.choose_hero._init'
