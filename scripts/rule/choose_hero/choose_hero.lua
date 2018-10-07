@@ -22,23 +22,23 @@ mt.hero_show_point = nil
 --被选择的英雄
 mt.all_chosen_hero_data = {
     {
-        id = 'Hmkg',
+        name = '元素法师',
         tips = "这是一个很傻逼的英雄，千万别选！1",
     },
     {
-        id = 'Hmkg',
+        name = 'Hmkg',
         tips = "这是一个很傻逼的英雄，千万别选！2",
     },
     {
-        id = 'Hmkg',
+        name = 'Hmkg',
         tips = "这是一个很傻逼的英雄，千万别选！3",
     },
     {
-        id = 'Hmkg',
+        name = 'Hmkg',
         tips = "这是一个很傻逼的英雄，千万别选！4",
     },
     {
-        id = 'Hmkg',
+        name = 'Hmkg',
         tips = "这是一个很傻逼的英雄，千万别选！5",
     },
 }
@@ -65,7 +65,7 @@ function mt:prepare_chosen_heros()
     local angle = 0
     for _, hero_data in pairs(self.all_chosen_hero_data) do
         local point = central_point - {angle, radius}
-        local hero = ac.player[16]:create_unit(hero_data.id, point, angle + 180)
+        local hero = ac.player[16]:create_unit(hero_data.name, point, angle + 180)
         hero_data.hero = hero
         hero:remove_ability('Amov')
         hero:add_alpha(-100)
@@ -79,12 +79,12 @@ function mt:prepare_fog()
     Player.self:set_camera(rect)
 end
 
-function mt:offer_hero_to_player(id, player)
+function mt:offer_hero_to_player(name, player)
     if not self.hero_show_point then
         self.hero_show_point = Map_rects['默认视野']:get_point()
     end
     local point = self.hero_show_point
-    local hero = player:create_hero(id, point)
+    local hero = player:create_hero(name, point)
     player.hero = hero
     player:set_camera(point)
     player:select_unit(hero)
@@ -104,8 +104,8 @@ function mt:prepare_chosen_hero_trg()
             if player.hero then
                 return
             end
-            local id = hero_data.id
-            self:offer_hero_to_player(id, player)
+            local name = hero_data.name
+            self:offer_hero_to_player(name, player)
         end)
     end
 end
@@ -129,13 +129,13 @@ function mt:start()
 end
 
 function mt:force_player_choose_hero()
-    local id
+    local name
     for _, player in pairs(Player.force[1]) do
         if player:is_player() and not player.hero then
-            if not id then
-                id = self.all_chosen_hero_data[1].id
+            if not name then
+                name = self.all_chosen_hero_data[1].name
             end
-            self:offer_hero_to_player(id, player)
+            self:offer_hero_to_player(name, player)
         end
     end
 end
