@@ -1,4 +1,4 @@
-local mt = ac.hero['元素法师']{
-    war3_id = 'H200',
-    skill_names = '灵魂收集 元素守护'
+local mt = ac.hero['龙骑士']{
+    war3_id = 'H201',
+    skill_names = '钢铁之躯 圣龙降临'
 }
