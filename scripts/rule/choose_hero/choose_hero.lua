@@ -23,11 +23,11 @@ mt.hero_show_point = nil
 mt.all_chosen_hero_data = {
     {
         name = '元素法师',
-        tips = "这是一个很傻逼的英雄，千万别选！1",
+        tips = "远程法师，擅长使用魔法",
     },
     {
-        name = 'Hmkg',
-        tips = "这是一个很傻逼的英雄，千万别选！2",
+        name = '龙骑士',
+        tips = "战士型英雄，靠肉搏打天下",
     },
     {
         name = 'Hmkg',
