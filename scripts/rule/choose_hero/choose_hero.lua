@@ -30,8 +30,8 @@ mt.all_chosen_hero_data = {
         tips = "战士型英雄，靠肉搏打天下",
     },
     {
-        name = 'Hmkg',
-        tips = "这是一个很傻逼的英雄，千万别选！3",
+        name = '黑暗游侠',
+        tips = '单挑天下无敌！',
     },
     {
         name = 'Hmkg',
