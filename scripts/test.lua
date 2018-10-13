@@ -98,7 +98,7 @@ local function check_effect(u)
     -- local ef1 = u:add_effect(model, 'overhead')
     local ef2 = u:get_point():add_effect(model)
     ac.wait(3000, function()
-        ef1:kill()
+        -- ef1:kill()
         ef2:kill()
     end)
 end
@@ -141,7 +141,7 @@ end
 
 local function check_skill(u)
     local mt = ac.skill['牛逼的风暴锤']{
-        war3_id = 'AHwe',
+        war3_id = 'AHtc',
         damage = function(self)
             return 5
         end,
@@ -149,11 +149,12 @@ local function check_skill(u)
             print('life:', self.owner:tostring())
             return self.owner:get_life()
         end,
+        attacks = {3, 5, 7, 9}
     }
     function mt:on_add()
         local unit = self.owner
         unit:add_buff('超生命体'){}
-        print('on_add:', self, unit:get_name(), self.damage, self.life)
+        print('on_add:', self, unit:get_name(), self.damage, self.life, self.attacks)
     end
 
     function mt:on_remove()
@@ -165,14 +166,23 @@ local function check_skill(u)
 
     function mt:on_effect()
         local unit = self.owner
-        print('单位发动技能效果啦！', self, unit:tostring(), self.damage, self.life)
+        print('单位发动技能效果啦！', self, unit:tostring(), self.damage, self.life, self.attacks)
+        ac.wait(3000, function()
+            local skl = unit:find_skill('牛逼的风暴锤')
+            skl:set_level(skl:get_level() + 1)
+        end)
+    end
+
+    function mt:on_end()
+        local unit = self.owner
+        print('单位结束使用技能！', self, unit:tostring(), self.damage, self.life)
     end
     
     print('添加的技能：', u:add_skill('牛逼的风暴锤'){})
-    ac.wait(15000, function()
-        ac.player[1]:send_msg('10秒到啦')
-        print('移除技能：', u:remove_skill('牛逼的风暴锤') )
-    end)
+    -- ac.wait(10000, function()
+    --     ac.player[1]:send_msg('10秒到啦')
+    --     print('移除技能：', u:remove_skill('牛逼的风暴锤') )
+    -- end)
 end
 
 local function check_item(u)
@@ -181,6 +191,7 @@ local function check_item(u)
         life = 1000,
         mana = 500,
         attack = 200,
+        str = 10,
     }
 
     function mt:on_add()
@@ -191,7 +202,7 @@ local function check_item(u)
     function mt:on_drop()
         local unit = self.owner
         print()
-        unit:remove_buff('超生命体')
+        -- unit:remove_buff('超生命体')
         print('on_drop:', self, unit:get_name() )
     end
     ac.wait(1500, function()
@@ -248,7 +259,25 @@ local function check_hero()
     }
 
     local hero = ac.player[1]:create_hero('山丘之王', ac.point(0, 0))
+    print('单位类型：', hero:is_type_hero(), jass.IsUnitType(hero.handle, jass.UNIT_TYPE_HERO), hero:tostring())
+    
+    -- hero.old_add_add_str = hero.add_add_str
+    -- function hero:add_add_str(str)
+    --     -- self:old_add_add_str(2*str)
+    --     print('hero， add_add_str', str)
+    --     local mt = self.__index
+    --     mt.add_add_str(self, 2*str)
+    -- end
 
+    -- --两种方式都可以，优先选择下面这张吧
+    -- hero.old_add_life = hero.add_life
+    -- function hero:add_max_life(life)
+    --     print('hero， add_max_life', life)
+    --     hero:old_add_life(2*life)
+    -- end
+    -- check_item(hero)
+    
+    --[[
     hero:add_add_str(100)
     hero:add_add_agi(90)
     hero:add_add_int(80)
@@ -263,21 +292,29 @@ local function check_hero()
         hero:add_add_agi(-10)
         hero:add_add_int(-10)
     end)
-
+    --]]
+    return hero
 end
 
 local function check_mover(u, u2)
-    --[[
-    ac.mover.line{
+    ---[[
+    local mvr = ac.mover.line{
         source = u,
-		mover = u,
+        -- model = [[Abilities\Spells\Human\MagicSentry\MagicSentryCaster.mdl]],
+        model = [[Abilities\Spells\NightElf\SpiritOfVengeance\SpiritOfVengeanceBirthMissile.mdl]],
+        -- id = 'hfoo',
+        -- mover = u,
 		angle = 45,
 		distance = 2000,
-		speed = 1000,
+		speed = 100,
 		keep = true,
 		skill = true,
     }
+    function mvr:on_finish()
+        print('运动器到期', self.model)
+    end
     --]]
+    --[[
     ac.mover.target{
 			source = u,
 			target = u2,
@@ -286,7 +323,8 @@ local function check_mover(u, u2)
 			angle = u:get_point() / u2:get_point(),
 			max_distance = 3000,
 			skill = true,
-	}
+    }
+    --]]
 end
 
 local function check_dialog()
@@ -330,6 +368,23 @@ local function check_dialog()
         :run()
 end
 
+local function check_follow()
+    local u = ac.player[1]:create_unit('Hmkg', ac.point(0, 0))
+    u:follow({
+        source = hero,
+        model = [[Abilities\Spells\NightElf\SpiritOfVengeance\SpiritOfVengeanceBirthMissile.mdl]],
+        distance = 250,
+        high = 100,
+        skill = true,
+        angle_speed = 100,
+    })
+end
+
+local function check_crit()
+    local u = ac.player[1]:create_unit('Obla', ac.point(0, 0))
+    u:set_crit()
+end
+
 local function test_model()
     -- jass.FogEnable(false)
     -- jass.FogMaskEnable(false)
@@ -338,7 +393,7 @@ local function test_model()
     -- hero:set_level(100)
     -- jass.SetHeroLevel(hero.handle, 100, false)
     -- print(ac.player[1]:tostring())
-    -- local Player = Rount.player
+    -- local Player = Router.player
     -- print(Player.self:tostring())
     ac.wait(1000, function()
         ac.player[1]:send_msg('1秒时间到！')
@@ -350,6 +405,8 @@ local function test_model()
         -- check_point()
         -- check_region()
         check_fogmodifier()
+        -- check_buff(u1)
+        -- local hero = check_hero()
         -- check_lightning(u1, u2)
         -- check_texttag(u1)
         -- u1:create_illusion(100, 100, 10)
@@ -359,8 +416,7 @@ local function test_model()
         -- u1:create_illusion(100, 100, 10)
         -- jass.IssueTargetOrderById(u1.handle, 852274, u2.handle)
         -- check_effect(u1)
-        -- check_buff(u1)
-        -- check_skill(u1)
+        -- check_skill(hero)
         -- local point = u1:get_point()
         -- local x, y = point:get()
         -- check_item(u1)
@@ -369,17 +425,22 @@ local function test_model()
         -- ac.wait(3500, function()
         --     check_attribute(u1)
         -- end)
-        -- check_hero()
         -- check_mover(u1, u2)
+        -- check_follow()
         -- check_dialog()
+        check_crit()
     end)
 end
 
 if not base.release then
-    test_model()
-    ac.wait(3000, function()
+    -- test_model()
+    ac.player[1]:add_gold(10000)
+    ac.wait(1000, function()
         print('选择游戏难度')
-        --ac.game:event_notify('游戏-选择难度')
+        if not Map_game.test then
+            Map_game.test = true
+            ac.game:event_notify('游戏-选择难度')
+        end
     end)
     
 end
