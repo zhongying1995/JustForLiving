@@ -38,7 +38,7 @@ mt.all_chosen_hero_data = {
         tips = "救死扶伤，匡衡天下",
     },
     {
-        name = '黑暗舞者',
+        name = '潜影者',
         tips = "黑暗中的王者",
     },
 }
