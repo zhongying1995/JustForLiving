@@ -34,12 +34,12 @@ mt.all_chosen_hero_data = {
         tips = '单挑天下无敌！',
     },
     {
-        name = 'Hmkg',
-        tips = "这是一个很傻逼的英雄，千万别选！4",
+        name = '神圣牧师',
+        tips = "救死扶伤，匡衡天下",
     },
     {
-        name = 'Hmkg',
-        tips = "这是一个很傻逼的英雄，千万别选！5",
+        name = '黑暗舞者',
+        tips = "黑暗中的王者",
     },
 }
 

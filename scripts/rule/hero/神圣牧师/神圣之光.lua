@@ -1,3 +1,3 @@
-local mt = ac.skill['影舞']{
+local mt = ac.skill['神圣之光']{
     war3_id = 'A309',
 }
