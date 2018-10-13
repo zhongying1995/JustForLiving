@@ -1,13 +1,6 @@
 local mt = ac.skill['灵魂收集']{
     war3_id = 'A300',
-    int_upper_limits = {
-        100,
-        200,
-        300,
-        400,
-        500
-    },
-    int_upper_limit = 100,
+    int_upper_limit = {100, 200, 300, 400, 500},
     effect_model = [[Abilities\Spells\NightElf\SpiritOfVengeance\SpiritOfVengeanceBirthMissile.mdl]],
 }
 
@@ -43,9 +36,6 @@ function mt:on_add()
     end)
 end
 
-function mt:on_upgrade()
-    self.int_upper_limit = self.int_upper_limits[self.level]
-end
 
 function mt:on_remove()
     if self.add_int_trg then

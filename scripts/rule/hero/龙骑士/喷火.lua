@@ -2,7 +2,7 @@ local mt = ac.skill['喷火']{
     war3_id = 'A304',
     effect_model = [[Abilities\Spells\Other\BreathOfFire\BreathOfFireMissile.mdl]],
     radius = 250,
-    damages = {100, 200, 300, 400, 500},
+    damage = {100, 200, 300, 400, 500},
     de_attack_rate = 25,
     time = 10,
 }
@@ -11,7 +11,7 @@ function mt:on_effect()
     local unit = self.owner
     local ang = unit:get_facing()
     local lv = self:get_level()
-    local damage = self.damages[lv]
+    local damage = self.damage
     local high = unit:get_high()
     local mvr = ac.mover.line{
         start = (unit:get_point() - {ang, 80}),
