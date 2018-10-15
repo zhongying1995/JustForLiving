@@ -1,18 +1,46 @@
 local mt = ac.skill['追击']{
     war3_id = 'A305',
-    effect_model = [[Abilities\Spells\Other\BlackArrow\BlackArrowMissile.mdl]],
     rate = {20, 25, 30, 35, 40},
+    passive = true,
+}
+
+function mt:on_enable()
+    local unit = self.owner
+    unit:add_buff('黑暗游侠-追击'){
+        skill = self,
+    }
+end
+
+function mt:on_disable()
+    local unit = self.owner
+    unit:remove_buff('黑暗游侠-追击')
+end
+
+function mt:on_upgrade()
+    if self:is_enable() then
+        local unit = self.owner
+        unit:remove_buff('黑暗游侠-追击')
+        unit:add_buff('黑暗游侠-追击'){
+            skill = self,
+        }
+    end
+end
+
+
+local mt = ac.buff['黑暗游侠-追击']{
+    effect_model = [[Abilities\Spells\Other\BlackArrow\BlackArrowMissile.mdl]],
+    speed = 900,
 }
 
 function mt:on_add()
-    local unit = self.owner
+    local unit = self.target
+    local skill = self.skill
     self.trg = unit:event '单位-即将造成伤害'(function(trg, damage)
         if not damage:is_attack() then
             return
         end
-        local level = self:get_level()
-        local rate = self.rate
-        if rate < math.random(1, 100) then
+        local rate = skill.rate
+        if rate <= math.random(1, 100) then
             return
         end
         local target = damage.target
@@ -22,8 +50,8 @@ function mt:on_add()
             model = self.effect_model,
             target = target,
             high = high,
-            speed = 900,
-            skill = self,
+            speed = self.speed,
+            skill = skill,
         }
         if mvr then
             function mvr:on_finish()
