@@ -1,13 +1,10 @@
 local mt = ac.skill['灵魂收集']{
     war3_id = 'A300',
     int_upper_limit = {100, 200, 300, 400, 500},
+    passive = true,
 }
 
-function mt:on_add()
-    self:on_eable()
-end
-
-function mt:on_eable()
+function mt:on_enable()
     local unit = self.owner
     unit:add_buff('元素法师-灵魂收集'){
         skill = self,
@@ -19,10 +16,6 @@ function mt:on_disable()
     unit:remove_buff('元素法师-灵魂收集')
 end
 
-
-function mt:on_remove()
-    self:on_disable()
-end
 
 local mt = ac.buff['元素法师-灵魂收集']{
     effect_model = [[Abilities\Spells\NightElf\SpiritOfVengeance\SpiritOfVengeanceBirthMissile.mdl]],
