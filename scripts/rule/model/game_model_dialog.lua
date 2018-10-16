@@ -30,6 +30,7 @@ end
 
 local function end_choose_game_model()
     ac.game:event_notify('游戏-开始选择英雄')
+    ac.game:event_notify('游戏-开始')
 end
 
 
