@@ -25,6 +25,9 @@ mt.super_type = mt.super.type
 --回合数
 mt.index = 0
 
+--最大回合数量，默认36回合
+mt._max_round_number = 36
+
 --回合状态，四种状态，创建、准备、开始、结束
 mt.state = nil
 
@@ -95,7 +98,6 @@ end
 function mt:create_attack_unit( point )
     local unit_id = self.creep_datas.unit_id
     local u = Player.force[2][1]:create_unit(unit_id, point, math.random(0,360))
-    u._is_invade_unit = true
     local target = get_attack_hero()
     if not target then
         target = ac.point(0, 0)
@@ -104,8 +106,13 @@ function mt:create_attack_unit( point )
     table_insert(self.all_creeps, u)
 end
 
-local focus_style_time = 0.1 * 1000
-local disperse_style_time = 0.3 * 1000
+--聚集出现时的特效和时间
+mt.focus_effect_model = [[Doodads\Cinematic\ShimmeringPortal\ShimmeringPortal.mdl]]
+mt.focus_style_time = 0.1 * 1000
+
+--离散出现时的特效和时间
+mt.disperse_effect_model = [[Abilities\Spells\Orc\MirrorImage\MirrorImageDeathCaster.mdl]]
+mt.disperse_style_time = 0.3 * 1000
 --回合开始，创建进攻怪物
 --  @本回合应该创建多少野怪
 function mt:create_invades(  )
@@ -120,15 +127,21 @@ function mt:create_invades(  )
     for i = 1, birth_rect_count do
         if i ~= inexpectant_index then
             local rct = creep_birth_rects[i]
-            ac.timer(focus_style_time, number_1, function ( t )
+            local ef = rct:get_point():add_effect(self.focus_effect_model)
+            ac.wait(2*1000, function()
+                ef:remove()
+            end)
+            ac.timer(self.focus_style_time, number_1, function ( t )
                 self:create_attack_unit( rct:get_random_point() )
             end)
         end
     end
     ac.wait(5*1000, function (  )
         local rct = Map_rects['战斗区域']
-        ac.timer(disperse_style_time, number_2, function ( t )
-            self:create_attack_unit( rct:get_random_point() )
+        ac.timer(self.disperse_style_time, number_2, function ( t )
+            local point = rct:get_random_point()
+            point:add_effect(self.disperse_effect_model):remove()
+            self:create_attack_unit( point )
         end)
     end)
     print('创建的野怪数量：', numbers, number_1, number_1 * (birth_rect_count-1), number_2)
@@ -139,7 +152,8 @@ end
 function mt:start(  )
     self.state = '开始'
     self:show_start_round_msg()
-    self.invade_unit_counts = self:create_invades()
+    self:create_invades()
+    self.invade_unit_counts = 0
     self.timerdialog:set_time(self.creep_datas.clear_time)
         :set_title('清除怪物倒计时：')
         :set_on_expire_listener(function (  )
@@ -156,6 +170,13 @@ function mt:start(  )
             if self.invade_unit_dead_counts >= self.invade_unit_counts then
                 self:finish()
             end
+        end
+    end)
+
+    --监听动态增加进攻怪数量
+    self.invade_unit_create_trg = ac.game:event '单位-创建'(function(trg, unit)
+        if unit:get_owner() == Player.force[2][1] and not unit._is_invade_unit then
+            self.invade_unit_counts = self.invade_unit_counts + 1
         end
     end)
 
@@ -237,6 +258,20 @@ function mt:finish( is_reward )
 
     --回合结束，应该向上交出回合处理权
     ac.game:event_notify( '回合-结束-上交权限', self)
+end
+
+--设置最大回合数
+function mt:set_max_round_number(n)
+    self._max_round_number = n
+end
+
+function mt:get_max_round_number()
+    return self._max_round_number
+end
+
+--获取当前回合数
+function mt:get_round_number()
+    return self.index
 end
 
 function mt:remove(  )

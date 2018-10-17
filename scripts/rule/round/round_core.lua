@@ -1,6 +1,9 @@
 local Normal_round = require 'rule.round.normal_round'
 local Boss_round = require 'rule.round.boss_round'
 local Special_round = require 'rule.round.special_round'
+local Final_round = require 'rule.round.final_round'
+local Fogmodifier = Router.fogmodifier
+local Rects = require 'base.rects'
 
 --负责回合的切换与运行
 local Round_core = {}
@@ -9,6 +12,7 @@ setmetatable(Round_core, Round_core)
 local mt = {}
 Round_core.__index = mt
 
+--每间隔 6 回合，出现一次boss
 local normal_round_switch_interval = 6
 
 --初始化-切换(调度算法)-创建-结束-切换
@@ -31,7 +35,12 @@ local function switch_round(self, finish_round)
         end
     elseif type == 'boss回合' then
         print('boss回合')
-        self.current_round = Normal_round
+        local n = Normal_round:get_round_number()
+        if n == Normal_round:get_max_round_number() then
+            self.current_round = Final_round
+        else
+            self.current_round = Normal_round
+        end
     else
         log.error('未知的回合触发回合调度算法！请检查！')
         return
@@ -54,6 +63,12 @@ function mt:create(  )
     self.current_round:create()
 end
 
+--创建战斗区域视野
+function mt:create_battle_fog()
+    local rect = Rects['战斗区域']
+    self.battle_fog = Fogmodifier:new(ac.player.self, rect)
+end
+
 --目标回合已经结束，进行调度，准备下一回合
 --  已经结束的回合
 function mt:finish( finish_round )
@@ -68,6 +83,7 @@ function mt:init(  )
         self:finish(round)
     end)
     self:init_default_round()
+    self:create_battle_fog()
 end
 
 ac.game:event '游戏-开始回合逻辑'(function ()
