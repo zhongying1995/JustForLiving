@@ -26,6 +26,7 @@ local function open_model_dialog(player)
     dialog:show(player)
         :set_life(10)
         :run()
+    return dialog
 end
 
 local function end_choose_game_model()
@@ -67,7 +68,9 @@ degree_dialog = {
                 print(player:tostring(), '点击了 老鸟劝退级 难度')
                 choose_degree('老鸟劝退级', player)
                 close_dialog(dialog)
-                open_model_dialog(player)
+                local model_dialog = open_model_dialog(player)
+                model_dialog:add_button(model_dialog.hide_button)
+                model_dialog:refresh()
             end,
         },
     },
@@ -97,15 +100,16 @@ model_dialog = {
                 end_choose_game_model()
             end,
         },
-        [3] = {
-            title = '生存+防守模式',
-            key = nil,
-            on_click = function(dialog, player)
-                choose_model('生存+防守模式', player)
-                close_dialog(dialog)
-                end_choose_game_model()
-            end,
-        },
+    },
+
+    hide_button = {
+        title = '生存+防守模式',
+        key = nil,
+        on_click = function(dialog, player)
+            choose_model('生存+防守模式', player)
+            close_dialog(dialog)
+            end_choose_game_model()
+        end,
     },
 
 }
