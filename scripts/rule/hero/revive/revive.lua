@@ -67,29 +67,28 @@ end
 function mt:prepare_revive_unit(unit)
     if self:get_remaining_revive_times() > 0 then
         self:add_remaining_revive_times(-1)
-        ac.player.self:send_msg(('复活次数还剩下|cffff0000%s|r次'):format(self:get_remaining_revive_times()), 10)
-        self:start_revive_timer(unit)
+        self:prepare_revive_timer(unit)
     else
-        ac.player.self:send_msg('|cffff0000复活次数使用完，暂时无法再次复活！|r')
         ac.game:event_notify('游戏-复活次数用完', unit)
     end
+    self:show_remaining_revive_times()
 end
 
 --开始复活一个单位
 --  被复活的单位
 --  强行复活，不减少复活次数计数
-function mt:start_revive_unit(unit, is_force)
+function mt:revive_unit(unit, is_force)
     if is_force then
         if self._revive_timers[unit] then
             self._revive_timers[unit]:remove()
         end
         self:add_remaining_revive_times(1)
     end
-    self:revive_unit(unit, unit:get_revive_point())
+    self:force_revive_unit(unit, unit:get_revive_point())
 end
 
 --为单位分配一个复活计时器
-function mt:start_revive_timer(unit)
+function mt:prepare_revive_timer(unit)
     if not self._revive_timers then
         self._revive_timers = {}
     end
@@ -100,7 +99,7 @@ function mt:start_revive_timer(unit)
     local time = unit:get_revive_time()
     unit:get_owner():send_msg(('[%s]将在%s后复活！'):format(unit:get_name(), time), 4)
     self._revive_timers[unit] = ac.wait(time * 1000, function()
-        self:start_revive_unit(unit)
+        self:revive_unit(unit)
         self._revive_timers[unit] = nil
     end)
 end
@@ -129,8 +128,17 @@ function mt:add_remaining_revive_times(times)
     self:set_remaining_revive_times(self:get_remaining_revive_times() + times)
 end
 
+--对玩家显示剩下的可复活次数
+function mt:show_remaining_revive_times()
+    if self:get_remaining_revive_times() > 0 then
+        ac.player.self:send_msg(('复活次数还剩下|cffff0000%s|r次'):format(self:get_remaining_revive_times()), 10)
+    else
+        ac.player.self:send_msg('|cffff0000复活次数使用完，暂时无法再次复活！|r')
+    end
+end
+
 --复活一个单位
-function mt:revive_unit(unit, where)
+function mt:force_revive_unit(unit, where)
     local where = where or unit:get_revive_point()
     unit:revive(unit, where)
 end
