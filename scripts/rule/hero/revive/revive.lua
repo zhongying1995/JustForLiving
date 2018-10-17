@@ -52,6 +52,15 @@ function mt:add_dead_unit(unit)
     self:prepare_revive_unit(unit)
 end
 
+function mt:remove_dead_unit(unit)
+    for i = #self._dead_unit_list, 1, -1 do
+        if self._dead_unit_list[i] == unit then
+            table_remove(self._dead_unit_list, i)
+            break
+        end
+    end
+end
+
 function mt:get_dead_units()
     return self._dead_unit_list
 end
@@ -140,6 +149,7 @@ end
 --复活一个单位
 function mt:force_revive_unit(unit, where)
     local where = where or unit:get_revive_point()
+    self:remove_dead_unit(unit)
     unit:revive(unit, where)
 end
 
