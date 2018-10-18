@@ -10,7 +10,7 @@ function mt:get_datas_by_index( index )
 end
 
 mt[1] = {
-    boss_id = 'H100',
+    boss_id = 'H101',
     boss_count = 1,
     henchmans = {
         {
@@ -23,8 +23,96 @@ mt[1] = {
         },
     },
     msg = '第一关boss来袭，快快逃命！',
-    atk = 15,
-    life = 56,
+    prepare_time = 20,
+    clear_time = 120,
+}
+
+mt[2] = {
+    boss_id = 'H102',
+    boss_count = 1,
+    henchmans = {
+        {
+            id = 'hfoo',
+            count = 2,
+        },
+        {
+            id = 'hsor',
+            count = 2,
+        },
+    },
+    msg = '第二关boss来袭，快快逃命！',
+    prepare_time = 20,
+    clear_time = 120,
+}
+
+mt[3] = {
+    boss_id = 'H103',
+    boss_count = 1,
+    henchmans = {
+        {
+            id = 'hfoo',
+            count = 2,
+        },
+        {
+            id = 'hsor',
+            count = 2,
+        },
+    },
+    msg = '第三关boss来袭，快快逃命！',
+    prepare_time = 20,
+    clear_time = 120,
+}
+
+mt[4] = {
+    boss_id = 'H104',
+    boss_count = 1,
+    henchmans = {
+        {
+            id = 'hfoo',
+            count = 2,
+        },
+        {
+            id = 'hsor',
+            count = 2,
+        },
+    },
+    msg = '第四关boss来袭，快快逃命！',
+    prepare_time = 20,
+    clear_time = 120,
+}
+
+mt[5] = {
+    boss_id = 'H105',
+    boss_count = 1,
+    henchmans = {
+        {
+            id = 'hfoo',
+            count = 2,
+        },
+        {
+            id = 'hsor',
+            count = 2,
+        },
+    },
+    msg = '第五关boss来袭，快快逃命！',
+    prepare_time = 20,
+    clear_time = 120,
+}
+
+mt[6] = {
+    boss_id = 'H100',
+    boss_count = 1,
+    henchmans = {
+        {
+            id = 'hfoo',
+            count = 2,
+        },
+        {
+            id = 'hsor',
+            count = 2,
+        },
+    },
+    msg = '第六关boss来袭，快快逃命！',
     prepare_time = 20,
     clear_time = 120,
 }
