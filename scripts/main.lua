@@ -9,7 +9,7 @@ local function main()
 	print 'hello loli!'
 	print ('package.path = ', package.path)
 	print('hello 一中11231233')
-	require("war3Library._init")
+	require("war3library._init")
 
 	--地图应用层的全局变量
 	Map_game = {}
