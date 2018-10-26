@@ -10,7 +10,7 @@ function mt:get_datas_by_index( index )
 end
 
 mt[1] = {
-    boss_id = 'H101',
+    boss_id = 'O101',
     boss_count = 1,
     henchmans = {
         {
@@ -28,7 +28,7 @@ mt[1] = {
 }
 
 mt[2] = {
-    boss_id = 'H102',
+    boss_id = 'O102',
     boss_count = 1,
     henchmans = {
         {
@@ -46,7 +46,7 @@ mt[2] = {
 }
 
 mt[3] = {
-    boss_id = 'H103',
+    boss_id = 'O103',
     boss_count = 1,
     henchmans = {
         {
@@ -64,7 +64,7 @@ mt[3] = {
 }
 
 mt[4] = {
-    boss_id = 'H104',
+    boss_id = 'O104',
     boss_count = 1,
     henchmans = {
         {
@@ -82,7 +82,7 @@ mt[4] = {
 }
 
 mt[5] = {
-    boss_id = 'H105',
+    boss_id = 'O105',
     boss_count = 1,
     henchmans = {
         {
@@ -100,7 +100,7 @@ mt[5] = {
 }
 
 mt[6] = {
-    boss_id = 'H100',
+    boss_id = 'O100',
     boss_count = 1,
     henchmans = {
         {

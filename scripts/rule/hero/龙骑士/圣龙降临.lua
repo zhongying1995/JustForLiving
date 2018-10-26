@@ -4,7 +4,7 @@ local mt = ac.skill['圣龙降临']{
     life_per = {10, 15, 20, 25, 30},
     defence = 10,
     time = {15, 20, 25, 30, 35},
-    tranform_id = 'H202',
+    tranform_id = 'O202',
     tranform_effect_model = [[Abilities\Spells\Orc\FeralSpirit\feralspirittarget.mdl]],
 }
 
