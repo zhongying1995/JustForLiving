@@ -10,7 +10,7 @@ function mt:get_datas_by_index( index )
 end
 
 mt[1] = {
-    unit_id = 'h100',
+    name = '普通进攻怪-第1波',
     msg = '正宗阳澄湖大闸蟹来袭，不要争不要抢，人人有份人人有份！',
     count = 80,
     prepare_time = 100,
@@ -18,7 +18,7 @@ mt[1] = {
 }
 
 mt[2] = {
-    unit_id = 'h101',
+    name = '普通进攻怪-第2波',
     msg = '',
     count = 90,
     prepare_time = 30,
@@ -26,7 +26,7 @@ mt[2] = {
 }
 
 mt[3] = {
-    unit_id = 'h102',
+    name = '普通进攻怪-第3波',
     msg = '',
     count = 75,
     prepare_time = 30,
@@ -34,7 +34,7 @@ mt[3] = {
 }
 
 mt[4] = {
-    unit_id = 'h103',
+    name = '普通进攻怪-第4波',
     msg = '',
     count = 75,
     prepare_time = 30,
@@ -42,7 +42,7 @@ mt[4] = {
 }
 
 mt[5] = {
-    unit_id = 'h104',
+    name = '普通进攻怪-第5波',
     msg = '',
     count = 90,
     prepare_time = 20,
@@ -50,7 +50,7 @@ mt[5] = {
 }
 
 mt[6] = {
-    unit_id = 'h105',
+    name = '普通进攻怪-第6波',
     msg = '',
     count = 120,
     prepare_time = 20,
@@ -58,7 +58,7 @@ mt[6] = {
 }
 
 mt[7] = {
-    unit_id = 'h106',
+    name = '普通进攻怪-第7波',
     msg = '',
     count = 80,
     prepare_time = 40,
@@ -66,7 +66,7 @@ mt[7] = {
 }
 
 mt[8] = {
-    unit_id = 'h107',
+    name = '普通进攻怪-第8波',
     msg = '',
     count = 80,
     prepare_time = 30,
@@ -74,7 +74,7 @@ mt[8] = {
 }
 
 mt[9] = {
-    unit_id = 'h108',
+    name = '普通进攻怪-第9波',
     msg = '',
     count = 90,
     prepare_time = 20,
@@ -82,7 +82,7 @@ mt[9] = {
 }
 
 mt[10] = {
-    unit_id = 'h109',
+    name = '普通进攻怪-第10波',
     msg = '',
     count = 100,
     prepare_time = 20,
@@ -90,7 +90,7 @@ mt[10] = {
 }
 
 mt[11] = {
-    unit_id = 'h10A',
+    name = '普通进攻怪-第11波',
     msg = '',
     count = 100,
     prepare_time = 20,
@@ -98,7 +98,7 @@ mt[11] = {
 }
 
 mt[12] = {
-    unit_id = 'h10B',
+    name = '普通进攻怪-第12波',
     msg = '',
     count = 120,
     prepare_time = 20,
@@ -106,7 +106,7 @@ mt[12] = {
 }
 
 mt[13] = {
-    unit_id = 'h10C',
+    name = '普通进攻怪-第13波',
     msg = '',
     count = 120,
     prepare_time = 25,
@@ -114,7 +114,7 @@ mt[13] = {
 }
 
 mt[14] = {
-    unit_id = 'h10D',
+    name = '普通进攻怪-第14波',
     msg = '',
     count = 120,
     prepare_time = 25,
@@ -122,7 +122,7 @@ mt[14] = {
 }
 
 mt[15] = {
-    unit_id = 'h10E',
+    name = '普通进攻怪-第15波',
     msg = '',
     count = 120,
     prepare_time = 20,
@@ -130,7 +130,7 @@ mt[15] = {
 }
 
 mt[16] = {
-    unit_id = 'h10F',
+    name = '普通进攻怪-第16波',
     msg = '',
     count = 120,
     prepare_time = 20,
@@ -138,7 +138,7 @@ mt[16] = {
 }
 
 mt[17] = {
-    unit_id = 'h10G',
+    name = '普通进攻怪-第17波',
     msg = '',
     count = 130,
     prepare_time = 20,
@@ -146,7 +146,7 @@ mt[17] = {
 }
 
 mt[18] = {
-    unit_id = 'h10H',
+    name = '普通进攻怪-第18波',
     msg = '',
     count = 140,
     prepare_time = 30,
@@ -154,7 +154,7 @@ mt[18] = {
 }
 
 mt[19] = {
-    unit_id = 'h10I',
+    name = '普通进攻怪-第19波',
     msg = '',
     count = 140,
     prepare_time = 15,
@@ -162,7 +162,7 @@ mt[19] = {
 }
 
 mt[20] = {
-    unit_id = 'h10J',
+    name = '普通进攻怪-第20波',
     msg = '',
     count = 120,
     prepare_time = 15,
@@ -170,7 +170,7 @@ mt[20] = {
 }
 
 mt[21] = {
-    unit_id = 'h10K',
+    name = '普通进攻怪-第21波',
     msg = '',
     count = 120,
     prepare_time = 15,
@@ -178,7 +178,7 @@ mt[21] = {
 }
 
 mt[22] = {
-    unit_id = 'h10L',
+    name = '普通进攻怪-第22波',
     msg = '',
     count = 120,
     prepare_time = 15,
@@ -186,7 +186,7 @@ mt[22] = {
 }
 
 mt[23] = {
-    unit_id = 'h10M',
+    name = '普通进攻怪-第23波',
     msg = '',
     count = 130,
     prepare_time = 15,
@@ -194,7 +194,7 @@ mt[23] = {
 }
 
 mt[24] = {
-    unit_id = 'h10N',
+    name = '普通进攻怪-第24波',
     msg = '',
     count = 130,
     prepare_time = 10,
@@ -202,7 +202,7 @@ mt[24] = {
 }
 
 mt[25] = {
-    unit_id = 'h10O',
+    name = '普通进攻怪-第25波',
     msg = '',
     count = 100,
     prepare_time = 15,
@@ -210,7 +210,7 @@ mt[25] = {
 }
 
 mt[26] = {
-    unit_id = 'h10P',
+    name = '普通进攻怪-第26波',
     msg = '',
     count = 100,
     prepare_time = 15,
@@ -218,7 +218,7 @@ mt[26] = {
 }
 
 mt[27] = {
-    unit_id = 'h10Q',
+    name = '普通进攻怪-第27波',
     msg = '',
     count = 130,
     prepare_time = 12,
@@ -226,7 +226,7 @@ mt[27] = {
 }
 
 mt[28] = {
-    unit_id = 'h10R',
+    name = '普通进攻怪-第28波',
     msg = '',
     count = 130,
     prepare_time = 12,
@@ -234,7 +234,7 @@ mt[28] = {
 }
 
 mt[29] = {
-    unit_id = 'h10S',
+    name = '普通进攻怪-第29波',
     msg = '',
     count = 130,
     prepare_time = 10,
@@ -242,7 +242,7 @@ mt[29] = {
 }
 
 mt[30] = {
-    unit_id = 'h10T',
+    name = '普通进攻怪-第30波',
     msg = '',
     count = 120,
     prepare_time = 10,
@@ -250,7 +250,7 @@ mt[30] = {
 }
 
 mt[31] = {
-    unit_id = 'h10U',
+    name = '普通进攻怪-第31波',
     msg = '',
     count = 150,
     prepare_time = 10,
@@ -258,7 +258,7 @@ mt[31] = {
 }
 
 mt[32] = {
-    unit_id = 'h10V',
+    name = '普通进攻怪-第32波',
     msg = '',
     count = 150,
     prepare_time = 10,
@@ -266,7 +266,7 @@ mt[32] = {
 }
 
 mt[33] = {
-    unit_id = 'h10W',
+    name = '普通进攻怪-第33波',
     msg = '',
     count = 150,
     prepare_time = 10,
@@ -274,7 +274,7 @@ mt[33] = {
 }
 
 mt[34] = {
-    unit_id = 'h10X',
+    name = '普通进攻怪-第34波',
     msg = '',
     count = 160,
     prepare_time = 10,
@@ -282,7 +282,7 @@ mt[34] = {
 }
 
 mt[35] = {
-    unit_id = 'h10Y',
+    name = '普通进攻怪-第35波',
     msg = '',
     count = 170,
     prepare_time = 10,
@@ -290,7 +290,7 @@ mt[35] = {
 }
 
 mt[36] = {
-    unit_id = 'h10Z',
+    name = '普通进攻怪-第36波',
     msg = '第36波来袭！真的能活下去吗？',
     count = 180,
     prepare_time = 20,

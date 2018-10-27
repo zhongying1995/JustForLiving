@@ -96,8 +96,8 @@ local function get_attack_hero(  )
 end
 
 function mt:create_attack_unit( point )
-    local unit_id = self.creep_datas.unit_id
-    local u = Player.force[2][1]:create_unit(unit_id, point, math.random(0,360))
+    local name = self.creep_datas.name
+    local u = Player.force[2][1]:create_unit(name, point, math.random(0,360))
     local target = get_attack_hero()
     if not target then
         target = ac.point(0, 0)
