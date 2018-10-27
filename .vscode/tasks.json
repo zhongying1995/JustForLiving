@@ -50,21 +50,22 @@
                 "${workspaceRoot}"
             ]
         },
-        {
-            "label": "Slk",
-            "command": "chcp 65001 && \"${workspaceRoot}/tools/w3x2lni/w2l.exe\"",
-            "presentation": {
-                "echo": false,
-                "reveal": "always",
-                "focus": true,
-                "panel": "new"
-            },
-            "args": [
-                "slk",
-                "${workspaceRoot}",
-                "${workspaceRoot}/JustForLiving.w3x"
-            ]
-        },
+        //打包成slk地图，不使用直接的slk
+        // {
+        //     "label": "Slk",
+        //     "command": "chcp 65001 && \"${workspaceRoot}/tools/w3x2lni/w2l.exe\"",
+        //     "presentation": {
+        //         "echo": false,
+        //         "reveal": "always",
+        //         "focus": true,
+        //         "panel": "new"
+        //     },
+        //     "args": [
+        //         "slk",
+        //         "${workspaceRoot}",
+        //         "${workspaceRoot}/JustForLiving.w3x"
+        //     ]
+        // },
         {
             "label": "YDWE",
             "command": "chcp 65001 && \"${workspaceRoot}/tools/w3x2lni/bin/w3x2lni-lua.exe\"",
