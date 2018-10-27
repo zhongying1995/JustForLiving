@@ -1,6 +1,8 @@
 
 local Player = Router.player
 
+local mt = Player.__index
+
 Player.force = {}
 Player.force[1] = {
     [1] = Player[1],
@@ -18,6 +20,11 @@ Player.force[2] = {
 }
 --computer Player numbers
 ac.cpn = 8
+
+function mt:get_invade_creep_player()
+    return Player.force[2][1]
+end
+
 
 local function alliance(  )
     for i = 1, ac.cpn do
