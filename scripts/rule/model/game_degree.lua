@@ -32,6 +32,12 @@ function mt:show_degree_msg(msg, time)
     ac.player.self:send_msg(msg, time)
 end
 
+--设置物编科技等级
+function mt:set_research_level(id)
+    local player = self:get_invade_creep_player()
+    player:set_research_level(id, 1)
+end
+
 --增加进攻野怪的难度攻击力
 --  百分比
 function mt:add_invade_creep_attack(atk_rate)
@@ -77,17 +83,16 @@ mt['老鸟各自飞级'] = {
         36波后，迎来最终回合
         小概率触发特殊怪物进攻
     ]],
+    research_id = 'R101',
+    attack_rate = 30,
     action = function(self, player)
         print(player:tostring(), '点击了 老鸟各自飞级 难度')
         self:show_degree_msg(self.msg, 20)
 
         self:set_round_number(30)
         
-        --进攻怪玩家
-        local p = player:get_invade_creep_player()
-        --设置war3科技等级
-        p:set_research_level('R101', 1)
-
+        self:set_research_level(self.research_id)
+        self:add_invade_creep_attack(self.attack_rate)
     end
 }
 
@@ -100,16 +105,18 @@ mt['老鸟劝退级'] = {
             概率触发特殊怪物进攻
             触发游戏彩蛋
     ]],
+    research_id = 'R102',
+    attack_rate = 50,
+    defence_rate = 20,
     action = function(self, player)
         print(player:tostring(), '点击了 老鸟劝退级 难度')
         self:show_degree_msg(self.msg, 30)
 
         self:set_round_number(30)
 
-        --进攻怪玩家
-        local p = player:get_invade_creep_player()
-        --设置war3科技等级
-        p:set_research_level('R102', 1)
+        self:set_research_level(self.research_id)
+        self:add_invade_creep_attack(self.attack_rate)
+        self:add_invade_creep_defence(self.defence_rate)
     end
 }
 
