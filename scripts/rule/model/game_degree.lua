@@ -15,7 +15,7 @@ function mt:show_degree_msg(msg, time)
 end
 
 
-mt['小白过家家级'] = function(player)
+mt['小白过家家级'] = function(self, player)
     print(player:tostring(), '点击了 小白过家家级 难度')
     local msg = [[
         |cffff0000小白过家家难度|r：
@@ -23,12 +23,12 @@ mt['小白过家家级'] = function(player)
         生存30波后会迎来最终回合
         无特殊怪物进攻
     ]]
-    Game_degree:show_degree_msg(msg, 20)
+    self:show_degree_msg(msg, 20)
 
-    Game_degree:set_round_number(30)
+    self:set_round_number(30)
 end
 
-mt['老鸟各自飞级'] = function(player)
+mt['老鸟各自飞级'] = function(self, player)
     print(player:tostring(), '点击了 老鸟各自飞级 难度')
     local msg = [[
         |cffff0000老鸟各自飞难度|r：
@@ -37,12 +37,12 @@ mt['老鸟各自飞级'] = function(player)
         36波后，迎来最终回合
         小概率触发特殊怪物进攻
     ]]
-    Game_degree:show_degree_msg(msg, 20)
+    self:show_degree_msg(msg, 20)
 
-    Game_degree:set_round_number(30)
+    self:set_round_number(30)
 end
 
-mt['老鸟劝退级'] = function(player)
+mt['老鸟劝退级'] = function(self, player)
     print(player:tostring(), '点击了 老鸟劝退级 难度')
     local msg = [[
         |cffff0000老鸟劝退飞难度|r：
@@ -52,9 +52,9 @@ mt['老鸟劝退级'] = function(player)
         概率触发特殊怪物进攻
         触发游戏彩蛋
     ]]
-    Game_degree:show_degree_msg(msg, 30)
+    self:show_degree_msg(msg, 30)
 
-    Game_degree:set_round_number(30)
+    self:set_round_number(30)
 end
 
 

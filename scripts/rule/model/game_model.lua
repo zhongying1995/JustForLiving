@@ -5,7 +5,7 @@ local mt = {}
 Game_model.__index = mt
 
 
-mt['生存模式'] = function(player)
+mt['生存模式'] = function(self, player)
     print(player:tostring(), '点击了 生存模式')
     local msg = [[
         |cffff0000生存模式|r：
@@ -14,7 +14,7 @@ mt['生存模式'] = function(player)
     ac.player.self:send_msg(msg, 20)
 end
 
-mt['防守模式'] = function(player)
+mt['防守模式'] = function(self, player)
     print(player:tostring(), '点击了 防守模式')
     local msg = [[
         |cffff0000防守模式|r：
@@ -24,7 +24,7 @@ mt['防守模式'] = function(player)
     ac.player.self:send_msg(msg, 20)
 end
 
-mt['生存+防守模式'] = function(player)
+mt['生存+防守模式'] = function(self, player)
     print(player:tostring(), '点击了 生存+防守模式')
     local msg = [[
         |cffff0000生存+防守模式|r：

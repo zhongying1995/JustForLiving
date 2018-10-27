@@ -7,12 +7,12 @@ local degree_dialog, model_dialog
 
 local function choose_degree(degree, player)
     player:send_msg_to_force(('%s 选择了 %s 难度'):format(player:get_name(), degree), 10)
-    Game_degree[degree](player)
+    Game_degree[degree](Game_degree, player)
 end
 
 local function choose_model(model, player)
     player:send_msg_to_force(('%s 选择了 %s 模式'):format(player:get_name(), model), 10)
-    Game_model[model](player)
+    Game_model[model](Game_model, player)
 end
 
 local function close_dialog(dialog)
