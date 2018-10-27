@@ -30,6 +30,6 @@ call %currentPath%\w3x2lni\w2l.exe slk %targetPath% %mapCodePath%\%mapName%_slk.
 rmdir %targetPath% /s /q
 
 ::刷新电脑界面
-ping 127.1 /n 2 > nul
+echo please fresh the path[%targetPath%] manually
 
 pause
