@@ -40,10 +40,9 @@ end
 
 --测试版本和发布版本的脚本路径，这个文件的代码不是在本地的，修改后需要打包
 if base.release then
-	package.path = [[G:\War3\Warcraft3\War3Library\?.lua;]] .. package.path
-	print('当前版本为 发行版')
+	package.path = [[\?.lua;scripts\?.lua;]] .. package.path
 else
-	package.path = [[G:\War3\Warcraft3\War3Library\?.lua;]] .. package.path
+	package.path = [[G:\War3\Warcraft3\JustForLiving\?.lua;]] .. package.path
 	print('当前版本为 测试版')
 end
 
