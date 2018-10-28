@@ -90,17 +90,37 @@ function mt:show_start_round_msg(  )
 end
 
 --获取一个进击的目标
-local function get_attack_hero(  )
-    --临时方案
-    return ac.player[1].hero
+function mt:get_attack_hero( u )
+    local heros = {}
+    for i = 1, ac.cpn do
+        local p = ac.player.force[1][i]
+        if p:is_player() and p.hero and p.hero:is_alive() then
+            table_insert(heros, p.hero)
+        end
+    end
+    local hero = nil
+    if #heros > 0 then
+        local dis
+        for i = 1, #heros do
+            local temp = u:get_point() * heros[i]
+            if not dis then
+                dis = temp
+                hero = heros[i]
+            end
+            if temp < dis then
+                hero = heros[i]
+            end
+        end
+    end
+    return hero
 end
 
 function mt:create_attack_unit( point )
     local name = self.creep_datas.name
     local u = Player.force[2][1]:create_unit(name, point, math.random(0,360))
-    local target = get_attack_hero()
+    local target = self:get_attack_hero(u)
     if not target then
-        target = ac.point(0, 0)
+        target = u:get_point()
     end
     u:issue_order('attack', target)
     table_insert(self.all_creeps, u)
