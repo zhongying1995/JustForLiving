@@ -203,13 +203,13 @@ function mt:start(  )
     self.invade_unit_attack_timer = ac.loop(5*1000, function(t)
         for _, u in pairs(self.all_creeps) do
             if u:get_order() ~= 'attack' then
-                local target = get_attack_hero()
+                local target = self:get_attack_hero(u)
                 u:issue_order('attack', target)
             end
         end
         for _, u in pairs(self.remainder_creeps) do
             if u:get_order() ~= 'attack' then
-                local target = get_attack_hero()
+                local target = self:get_attack_hero(u)
                 u:issue_order('attack', target)
             end
         end
