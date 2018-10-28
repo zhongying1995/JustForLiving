@@ -1,6 +1,8 @@
 local Game_degree = {}
 setmetatable(Game_degree, Game_degree)
 
+Map_game.game_degree = Game_degree
+
 local mt = {}
 Game_degree.__index = mt
 
@@ -8,7 +10,7 @@ setmetatable(mt, {
     __newindex = function ( t, k, v )
         if type(v) == 'table' and v.action then
             setmetatable(v, v)
-            v.__index = t
+            v.__index = Game_degree
         end
         rawset(t, k, v)
     end
@@ -58,6 +60,16 @@ function mt:add_invade_creep_defence(def_rate)
     end)
 end
 
+--获取当前的难度
+function mt:get_game_degree()
+    return self._game_degree
+end
+
+--设置当前的难度
+function mt:set_game_degree(degree)
+    self._game_degree = degree
+end
+
 
 mt['小白过家家级'] = {
     msg = [[
@@ -66,8 +78,10 @@ mt['小白过家家级'] = {
         生存30波后会迎来最终回合
         无特殊怪物进攻
     ]],
+    level = 1,
     action = function(self, player)
         print(player:tostring(), '点击了 小白过家家级 难度')
+        Game_degree:set_game_degree(self)
         self:show_degree_msg(self.msg, 20)
 
         self:set_round_number(30)
@@ -83,10 +97,12 @@ mt['老鸟各自飞级'] = {
         36波后，迎来最终回合
         小概率触发特殊怪物进攻
     ]],
+    level = 2,
     research_id = 'R101',
     attack_rate = 30,
     action = function(self, player)
         print(player:tostring(), '点击了 老鸟各自飞级 难度')
+        Game_degree:set_game_degree(self)
         self:show_degree_msg(self.msg, 20)
 
         self:set_round_number(30)
@@ -105,11 +121,13 @@ mt['老鸟劝退级'] = {
             概率触发特殊怪物进攻
             触发游戏彩蛋
     ]],
+    level = 3,
     research_id = 'R102',
     attack_rate = 50,
     defence_rate = 20,
     action = function(self, player)
         print(player:tostring(), '点击了 老鸟劝退级 难度')
+        Game_degree:set_game_degree(self)
         self:show_degree_msg(self.msg, 30)
 
         self:set_round_number(30)
