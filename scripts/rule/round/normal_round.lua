@@ -11,6 +11,8 @@ setmetatable(Normal_round, Normal_round)
 local mt = {}
 Normal_round.__index = mt
 
+Map_game.normal_round = Normal_round
+
 --继承Round
 setmetatable(mt, mt)
 mt.__index = Round
@@ -90,7 +92,7 @@ function mt:show_start_round_msg(  )
 end
 
 --获取一个进击的目标
-function mt:get_attack_hero( u )
+function mt:get_attack_target( u )
     local heros = {}
     for i = 1, ac.cpn do
         local p = ac.player.force[1][i]
@@ -118,7 +120,7 @@ end
 function mt:create_attack_unit( point )
     local name = self.creep_datas.name
     local u = Player.force[2][1]:create_unit(name, point, math.random(0,360))
-    local target = self:get_attack_hero(u)
+    local target = self:get_attack_target(u)
     if not target then
         target = u:get_point()
     end
@@ -203,13 +205,19 @@ function mt:start(  )
     self.invade_unit_attack_timer = ac.loop(5*1000, function(t)
         for _, u in pairs(self.all_creeps) do
             if u:get_order() ~= 'attack' then
-                local target = self:get_attack_hero(u)
+                local target = self:get_attack_target(u)
+                if not target then
+                    target = u:get_point()
+                end
                 u:issue_order('attack', target)
             end
         end
         for _, u in pairs(self.remainder_creeps) do
             if u:get_order() ~= 'attack' then
-                local target = self:get_attack_hero(u)
+                local target = self:get_attack_target(u)
+                if not target then
+                    target = u:get_point()
+                end
                 u:issue_order('attack', target)
             end
         end
