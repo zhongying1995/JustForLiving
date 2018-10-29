@@ -11,7 +11,7 @@ setmetatable(Normal_round_exist, Normal_round_exist)
 local mt = {}
 Normal_round_exist.__index = mt
 
-Map_game.Normal_round_exist = Normal_round_exist
+Map_game.normal_round_exist = Normal_round_exist
 
 --继承Round
 setmetatable(mt, mt)
