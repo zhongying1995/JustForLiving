@@ -144,7 +144,7 @@ function mt:create_invades(  )
     local datas = self.creep_datas
     local numbers = datas.count
 
-    local creep_birth_rects = Map_rects['进攻怪物出生点']
+    local creep_birth_rects = Map_rects['进攻怪物出生点-生存']
     local birth_rect_count = #creep_birth_rects
     local number_1 = math.floor(numbers / birth_rect_count )
     local number_2 = numbers - number_1 * (birth_rect_count-1)

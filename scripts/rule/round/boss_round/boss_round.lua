@@ -126,7 +126,7 @@ local disperse_style_time = 0.3 * 1000
 --  @本回合应该创建多少野怪
 function mt:create_invades(  )
 
-    local creep_birth_rects = Map_rects['进攻怪物出生点']
+    local creep_birth_rects = Map_rects['进攻怪物出生点-生存']
     local birth_rect_index = math.random(1, #creep_birth_rects)
     local rect = creep_birth_rects[birth_rect_index]
     local numbers = self:create_attack_boss( rect:get_point() )

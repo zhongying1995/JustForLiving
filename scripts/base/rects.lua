@@ -2,12 +2,17 @@ local Rect = Router.rect
 
 local Map_rects = {}
 
-Map_rects['进攻怪物出生点'] = {
+Map_rects['进攻怪物出生点-生存'] = {
     Rect.j_rect('BirthPoint_1'),
     Rect.j_rect('BirthPoint_2'),
     Rect.j_rect('BirthPoint_3'),
     Rect.j_rect('BirthPoint_4'),
     Rect.j_rect('BirthPoint_5'),
+}
+
+Map_rects['进攻怪物出生点-防守'] = {
+    Rect.j_rect('BirthPoint_6'),
+    Rect.j_rect('BirthPoint_7'),
 }
 
 Map_rects['战斗区域'] = Rect.j_rect('Battlefield')
