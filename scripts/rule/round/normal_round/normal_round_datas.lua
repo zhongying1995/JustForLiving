@@ -24,7 +24,7 @@ mt[1] = {
     name = '普通进攻怪-第1波',
     msg = '正宗阳澄湖大闸蟹来袭，不要争不要抢，人人有份人人有份！',
     count = 80,
-    prepare_time = 100,
+    prepare_time = 40,
     clear_time = 100,
 }
 
