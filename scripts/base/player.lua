@@ -42,7 +42,7 @@ end
 
 --获得副本怪玩家
 function mt:get_wild_creep_player()
-    return Player.forcep[2][1]
+    return Player.force[2][1]
 end
 
 

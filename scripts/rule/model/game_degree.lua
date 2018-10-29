@@ -18,7 +18,7 @@ setmetatable(mt, {
 
 --设置普通回合最大波数
 function mt:set_round_number(n)
-    local round = require 'rule.round.normal_round'
+    local round = require 'rule.round.normal_round.normal_round_exist'
     round:set_max_round_number(n)
 end
 
