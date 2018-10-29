@@ -25,7 +25,7 @@ function mt:start()
     self.state = '开始'
 end
 
-function mt:stop()
+function mt:finish()
     self.state = '结束'
 end
 
