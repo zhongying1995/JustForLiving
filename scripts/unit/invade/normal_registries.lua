@@ -1,3 +1,8 @@
+
+ac.unit['主城']{
+    war3_id = 'h300',
+}
+
 ac.unit['普通进攻怪-第1波']{
     war3_id = 'h100',
     create_callback = function(self)

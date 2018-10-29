@@ -4,10 +4,21 @@ setmetatable(Normal_round_datas, Normal_round_datas)
 local mt = {}
 Normal_round_datas.__index = mt
 
-
+--获得该波次的单位数据
 function mt:get_datas_by_index( index )
     return Normal_round_datas[1]
 end
+
+--获取需要防守的主城
+function mt:get_guarded_tower()
+    return Normal_round_datas['主城']
+end
+
+
+mt['主城'] = {
+    name = '主城',
+    point = ac.point(516, 386),
+}
 
 mt[1] = {
     name = '普通进攻怪-第1波',
