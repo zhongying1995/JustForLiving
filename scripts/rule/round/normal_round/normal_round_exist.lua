@@ -78,7 +78,12 @@ function mt:prepare(  )
     if not self.remainder_creeps then
         self.remainder_creeps = {}
     end
-    self.timerdialog:set_time(10 or self.creep_datas.prepare_time)
+    local time = self.creep_datas.prepare_time
+    if self.index == 1 then
+        time = time + 60
+    end
+    
+    self.timerdialog:set_time( 10 or time)
         :set_title(('第%s回合倒计时：'):format(self.index))
         :set_title_color(255, 0, 0)
         :set_on_expire_listener(function (  )
