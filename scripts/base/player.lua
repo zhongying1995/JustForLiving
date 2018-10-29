@@ -3,6 +3,13 @@ local Player = Router.player
 
 local mt = Player.__index
 
+------------------结盟解释----------------------
+--玩家1-6为控制玩家
+--玩家7为控制玩家的电脑盟友玩家
+--玩家11为副本野怪玩家
+--玩家12为进攻怪玩家
+-----------------------------------------------
+
 Player.force = {}
 Player.force[1] = {
     [1] = Player[1],
@@ -11,40 +18,64 @@ Player.force[1] = {
     [4] = Player[4],
     [5] = Player[5],
     [6] = Player[6],
-    [7] = Player[7],
-    [8] = Player[8],
+    ['com'] = Player[7],
+    ['ally'] = Player[7],
     ['enemy'] = Player[12],
+    ['wild_enemy'] = Player[11],
 }
 Player.force[2] = {
-    Player[12]
+    [1] = Player[11],
+    [2] = Player[12],
 }
 --computer Player numbers
-ac.cpn = 8
+ac.cpn = 6
 
+--获得进攻怪玩家
 function mt:get_invade_creep_player()
     return Player.force[2][1]
 end
 
+--获得副本怪玩家
+function mt:get_wild_creep_player()
+    return Player.forcep[2][1]
+end
+
 
 local function alliance(  )
+    --控制玩家结盟
     for i = 1, ac.cpn do
         Player.force[1][i]:set_team(1)
 
         for j = 1, ac.cpn do
             Player.force[1][i]:set_alliance_ally(Player.force[1][j])
         end
-        --与玩家12敌对
-        Player.force[1][i]:set_alliance_ally(Player.force[1]['enemy'], false)
-        Player.force[1]['enemy']:set_alliance_ally(Player.force[1][i], false)
+
+        --与阵营2敌对
+        for j = 1, #Player.force[2] do
+            Player.force[1][i]:set_alliance_ally(Player.force[2][j], false)
+            Player.force[2][j]:set_alliance_ally(Player.force[1][i], false)
+        end
         
         --与玩家16普通结盟
         Player.force[1][i]:set_alliance(ac.player[16], 0, true)
         ac.player[16]:set_alliance(Player.force[1][i], 0, true)
     end
 
-    Player.force[2][1]:set_team(2)
-    Player.force[2][1]:set_alliance(ac.player[16], 0, true)
-    ac.player[16]:set_alliance(Player.force[2][1], 0, true)
+    --敌人玩家结盟
+    for i = 1, #Player.force[2] do
+        Player.force[2][i]:set_team(2)
+
+        for j = 1, #Player.force[2] do
+            Player.force[2][i]:set_alliance_ally(Player.force[2][j], true)
+            Player.force[2][j]:set_alliance_ally(Player.force[2][i], true)
+        end
+        
+        Player.force[2][i]:set_alliance(ac.player[16], 0, true)
+        ac.player[16]:set_alliance(Player.force[2][i], 0, true)
+    end
+
+    ac.player[16]:set_team(3)
+
 end
 
 
