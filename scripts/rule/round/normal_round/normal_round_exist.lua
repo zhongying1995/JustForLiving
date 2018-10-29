@@ -5,13 +5,13 @@ local Timerdialog = Router.timerdialog
 local Player = Router.player
 local table_insert = table.insert
 
-local Normal_round = {}
-setmetatable(Normal_round, Normal_round)
+local Normal_round_exist = {}
+setmetatable(Normal_round_exist, Normal_round_exist)
 
 local mt = {}
-Normal_round.__index = mt
+Normal_round_exist.__index = mt
 
-Map_game.normal_round = Normal_round
+Map_game.Normal_round_exist = Normal_round_exist
 
 --继承Round
 setmetatable(mt, mt)
@@ -309,4 +309,4 @@ end
 
 
 
-return Normal_round
+return Normal_round_exist
