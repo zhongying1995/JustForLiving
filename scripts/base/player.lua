@@ -30,6 +30,11 @@ Player.force[2] = {
 --computer Player numbers
 ac.cpn = 6
 
+--获取控制玩家的电脑盟友
+function mt:get_ally_com_player()
+    return Player.force[1]['com']
+end
+
 --获得进攻怪玩家
 function mt:get_invade_creep_player()
     return Player.force[2][1]
@@ -75,6 +80,10 @@ local function alliance(  )
     end
 
     ac.player[16]:set_team(3)
+
+    Map_game.ally_com_player = ac.player[1]:get_ally_com_player()
+    Map_game.invade_creep_player = ac.player[1]:get_invade_creep_player()
+    Map_game.wild_creep_player = ac.player[1]:get_wild_creep_player()
 
 end
 
