@@ -21,6 +21,9 @@ mt.super = Round
 --类型
 mt.type = '普通回合'
 
+--附加的类型
+mt.additive_type = '生存模式'
+
 --父类型
 mt.super_type = mt.super.type
 
