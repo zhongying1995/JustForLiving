@@ -1,1 +1,5 @@
+require 'rule.round.normal_round._init'
+require 'rule.round.boss_round._init'
+require 'rule.round.special_round._init'
+require 'rule.round'
 require 'rule.round.round_core'

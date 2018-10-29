@@ -1,0 +1,1 @@
+require 'rule.round.boss_round.boss_round_datas'

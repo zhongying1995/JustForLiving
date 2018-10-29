@@ -1,5 +1,5 @@
 local Round = require 'rule.round.round'
-local Boss_datas = require 'rule.round.boss_round_datas'
+local Boss_datas = require 'rule.round.boss_round.boss_round_datas'
 local Map_rects = require 'base.rects'
 local Timerdialog = Router.timerdialog
 local Player = Router.player

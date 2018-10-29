@@ -1,5 +1,5 @@
 local Round = require 'rule.round.round'
-local Creep_datas = require 'rule.round.normal_round_datas'
+local Creep_datas = require 'rule.round.normal_round.normal_round_datas'
 local Map_rects = require 'base.rects'
 local Timerdialog = Router.timerdialog
 local Player = Router.player
@@ -75,7 +75,7 @@ function mt:prepare(  )
     if not self.remainder_creeps then
         self.remainder_creeps = {}
     end
-    self.timerdialog:set_time(self.creep_datas.prepare_time)
+    self.timerdialog:set_time(10 or self.creep_datas.prepare_time)
         :set_title(('第%s回合倒计时：'):format(self.index))
         :set_title_color(255, 0, 0)
         :set_on_expire_listener(function (  )
