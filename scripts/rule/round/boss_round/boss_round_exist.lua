@@ -97,7 +97,7 @@ function mt:create_attack_boss( point )
     local datas = self.boss_datas
     local numbers = 0
     local num = datas.boss_count
-    local id = datas.boss_id
+    local id = datas.boss_name
     for i = 1, num do
         local boss = Player.force[2][1]:create_unit(id, point)
         boss:issue_order('attack', target)

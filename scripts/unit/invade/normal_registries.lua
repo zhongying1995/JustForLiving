@@ -1,8 +1,60 @@
 
+--注册主城
 ac.unit['主城']{
     war3_id = 'h300',
 }
 
+--注册boss
+ac.unit['Boss进攻怪-第1波']{
+    war3_id = 'O101',
+    create_callback = function(self)
+        self.is_invade_creep = true
+        self.is_invade_boss = true
+    end
+}
+
+ac.unit['Boss进攻怪-第2波']{
+    war3_id = 'O102',
+    create_callback = function(self)
+        self.is_invade_creep = true
+        self.is_invade_boss = true
+    end
+}
+
+ac.unit['Boss进攻怪-第3波']{
+    war3_id = 'O103',
+    create_callback = function(self)
+        self.is_invade_creep = true
+        self.is_invade_boss = true
+    end
+}
+
+ac.unit['Boss进攻怪-第4波']{
+    war3_id = 'O104',
+    create_callback = function(self)
+        self.is_invade_creep = true
+        self.is_invade_boss = true
+    end
+}
+
+ac.unit['Boss进攻怪-第5波']{
+    war3_id = 'O105',
+    create_callback = function(self)
+        self.is_invade_creep = true
+        self.is_invade_boss = true
+    end
+}
+
+ac.unit['Boss进攻怪-第6波']{
+    war3_id = 'O100',
+    create_callback = function(self)
+        self.is_invade_creep = true
+        self.is_invade_boss = true
+    end
+}
+
+
+--注册普通怪物
 ac.unit['普通进攻怪-第1波']{
     war3_id = 'h100',
     create_callback = function(self)
