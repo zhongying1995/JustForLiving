@@ -37,7 +37,7 @@ end
 
 --获得进攻怪玩家
 function mt:get_invade_creep_player()
-    return Player.force[2][1]
+    return Player.force[2][2]
 end
 
 --获得副本怪玩家
