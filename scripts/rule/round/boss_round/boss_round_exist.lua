@@ -4,11 +4,11 @@ local Map_rects = require 'base.rects'
 local Timerdialog = Router.timerdialog
 local Player = Router.player
 
-local Boss_round = {}
-setmetatable(Boss_round, Boss_round)
+local Boss_round_exist = {}
+setmetatable(Boss_round_exist, Boss_round_exist)
 
 local mt = {}
-Boss_round.__index = mt
+Boss_round_exist.__index = mt
 
 --继承Round
 setmetatable(mt, mt)
@@ -185,4 +185,4 @@ function mt:remove(  )
 end
 
 
-return Boss_round
+return Boss_round_exist
