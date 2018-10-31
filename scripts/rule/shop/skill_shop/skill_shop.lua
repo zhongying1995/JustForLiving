@@ -44,7 +44,8 @@ function mt:register(data)
 end
 
 function mt:init()
-    ac.game:event '单位-点击单位按钮'(function(trg, unit, name, shop)
+    ac.game:event '单位-点击单位按钮'(function(trg, unit, button)
+        local name = button.name
         local callback = self[name]
         if not callback then
             return
