@@ -49,6 +49,7 @@ function mt:init()
     local tower_data = Creep_datas:get_guarded_tower()
     self.tower_data = tower_data
     self.main_tower = ac.player[1]:get_ally_com_player():create_unit(tower_data.name, tower_data.point)
+    Map_game.main_tower = self.main_tower
 end
 
 function mt:create()
