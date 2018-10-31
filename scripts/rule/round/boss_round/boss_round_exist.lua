@@ -16,10 +16,14 @@ mt.__index = Round
 mt.super = Round
 
 --类型
-mt.type = '普通回合'
+mt.type = 'Boss回合'
 
 --父类型
 mt.super_type = mt.super.type
+
+
+--附加的类型
+mt.additive_type = '生存模式'
 
 --回合数
 mt.index = 0
