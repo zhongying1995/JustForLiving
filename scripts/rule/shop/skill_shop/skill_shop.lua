@@ -1,7 +1,9 @@
+local Unit_button = Router.unit_button
+
 local Skill_shop = {}
 setmetatable(Skill_shop, Skill_shop)
 
-local mt = {}
+local mt = Unit_button
 Skill_shop.__index = mt
 
 local function default_on_click(self, hero)
@@ -41,16 +43,11 @@ function mt:register(data)
     if not data.on_click then
         data.on_click = default_on_click
     end
-end
+    data.old_on_click = data.on_click
 
-function mt:init()
-    ac.game:event '单位-点击单位按钮'(function(trg, unit, button)
-        local name = button.name
-        local callback = self[name]
-        if not callback then
-            return
-        end
+    data.on_click = function(self)
         local hero
+        local unit = self.clicker
         if unit:is_hero() then
             hero = unit
         else
@@ -60,13 +57,11 @@ function mt:init()
                 hero = unit
             end
         end
-        if callback.on_click then
-            callback:on_click(hero)
-        end
+        self:old_on_click(hero)
+    end
 
-    end)
+    ac.unit_button[name](data)
 end
 
-Skill_shop:init()
 
 return Skill_shop
