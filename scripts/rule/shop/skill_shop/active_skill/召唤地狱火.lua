@@ -5,14 +5,10 @@ ac.skill[skill_name]{
     war3_id = 'A203'
 }
 
-ac.unit_button[skill_name]{
-    war3_id = 'h253',
-}
 
-local callback = {
+Skill_shop:register{
     name = skill_name,
+    war3_id = 'h253',
     skill_name = skill_name,
     max_level = 5,
 }
-
-Skill_shop:register(callback)

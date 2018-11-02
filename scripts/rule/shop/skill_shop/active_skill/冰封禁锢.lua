@@ -9,14 +9,12 @@ function mt:on_effect()
     
 end
 
-ac.unit_button[skill_name]{
-    war3_id = 'h255',
-}
 
-local callback = {
+local callback =
+
+Skill_shop:register {
+    war3_id = 'h255',
     name = skill_name,
     skill_name = skill_name,
     max_level = 5,
 }
-
-Skill_shop:register(callback)
