@@ -52,13 +52,13 @@ local function alliance(  )
         Player.force[1][i]:set_team(1)
 
         for j = 1, ac.cpn do
-            Player.force[1][i]:set_alliance_ally(Player.force[1][j])
+            Player.force[1][i]:set_alliance_simple(Player.force[1][j])
         end
 
         --与阵营2敌对
         for j = 1, #Player.force[2] do
-            Player.force[1][i]:set_alliance_ally(Player.force[2][j], false)
-            Player.force[2][j]:set_alliance_ally(Player.force[1][i], false)
+            Player.force[1][i]:set_alliance_simple(Player.force[2][j], false)
+            Player.force[2][j]:set_alliance_simple(Player.force[1][i], false)
         end
         
         --与玩家16普通结盟
@@ -71,8 +71,8 @@ local function alliance(  )
         Player.force[2][i]:set_team(2)
 
         for j = 1, #Player.force[2] do
-            Player.force[2][i]:set_alliance_ally(Player.force[2][j], true)
-            Player.force[2][j]:set_alliance_ally(Player.force[2][i], true)
+            Player.force[2][i]:set_alliance_simple(Player.force[2][j], true)
+            Player.force[2][j]:set_alliance_simple(Player.force[2][i], true)
         end
         
         Player.force[2][i]:set_alliance(ac.player[16], 0, true)
