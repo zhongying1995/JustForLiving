@@ -1,0 +1,1 @@
+require 'item.专属._init'
