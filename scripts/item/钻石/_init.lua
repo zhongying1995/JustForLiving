@@ -1,0 +1,1 @@
+require 'item.钻石.钻石魂珠'

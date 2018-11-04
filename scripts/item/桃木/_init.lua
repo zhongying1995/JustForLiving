@@ -1,0 +1,1 @@
+require 'item.桃木.桃木魂珠'

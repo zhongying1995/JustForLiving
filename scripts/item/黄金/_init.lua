@@ -1,0 +1,1 @@
+require 'item.黄金.真金魂珠'
