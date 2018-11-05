@@ -1,1 +1,7 @@
+require 'item.桃木.桃木剑'
+require 'item.桃木.桃木弓'
+require 'item.桃木.桃木杖'
+require 'item.桃木.桃木铃'
+require 'item.桃木.桃木镰'
+require 'item.桃木.桃木项链'
 require 'item.桃木.桃木魂珠'

@@ -1,1 +1,7 @@
+require 'item.青铜.黄铜剑'
+require 'item.青铜.黄铜弓'
+require 'item.青铜.黄铜杖'
+require 'item.青铜.黄铜铃'
+require 'item.青铜.黄铜镰'
+require 'item.青铜.黄铜项链'
 require 'item.青铜.黄铜魂珠'

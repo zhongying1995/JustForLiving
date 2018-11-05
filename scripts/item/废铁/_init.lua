@@ -1,1 +1,7 @@
+require 'item.废铁.精铁剑'
+require 'item.废铁.精铁弓'
+require 'item.废铁.精铁杖'
+require 'item.废铁.精铁铃'
+require 'item.废铁.精铁镰'
+require 'item.废铁.精铁项链'
 require 'item.废铁.精铁魂珠'

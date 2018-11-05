@@ -1,1 +1,7 @@
+require 'item.黄金.真金剑'
+require 'item.黄金.真金弓'
+require 'item.黄金.真金杖'
+require 'item.黄金.真金铃'
+require 'item.黄金.真金镰'
+require 'item.黄金.真金项链'
 require 'item.黄金.真金魂珠'

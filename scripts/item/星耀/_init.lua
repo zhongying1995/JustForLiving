@@ -1,1 +1,7 @@
+require 'item.星耀.黑耀剑'
+require 'item.星耀.黑耀弓'
+require 'item.星耀.黑耀杖'
+require 'item.星耀.黑耀铃'
+require 'item.星耀.黑耀镰'
+require 'item.星耀.黑耀项链'
 require 'item.星耀.黑耀魂珠'
