@@ -118,7 +118,7 @@ function CreateNeutralHostile takes nothing returns nothing
     local integer unitID
     local trigger t
     local real life
-    set u=CreateUnit(p, 'h400', - 4991.8, 1077.8, 332.110)
+    set u=CreateUnit(p, 'h400', - 5265.5, - 2055.7, - 7.118)
 endfunction
 //===========================================================================
 function CreateNeutralPassiveBuildings takes nothing returns nothing
