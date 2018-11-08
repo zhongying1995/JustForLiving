@@ -1,0 +1,1 @@
+require 'rule.shop.item_shop.合成废铁级'
