@@ -20,6 +20,7 @@ local function main()
 	require 'unit._init'
 	require 'item._init'
 	require 'rule._init'
+	require 'test._init'
 
 	require 'test'
 	ac.game:event '玩家-按下esc'(function(trg, player)
