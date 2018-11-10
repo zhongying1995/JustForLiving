@@ -36,6 +36,17 @@ function mt:on_click()
         return
     end
 
+    if unit:has_item('铂金套装') then
+        if i <= self.failed_rate then
+            self:failed('合成失败！钻石被融化了！', false)
+            return
+        end
+        unit:remove_item('铂金套装')
+        unit:add_item('钻石套装')
+        self:succeed()
+        return
+    end
+
     if unit:has_item('铂金剑') then
         if i <= self.failed_rate then
             self:failed('合成失败！钻石被融化了！', false)

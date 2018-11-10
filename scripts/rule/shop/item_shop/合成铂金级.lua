@@ -26,6 +26,13 @@ function mt:on_click()
         return
     end
 
+    if unit:has_item('真金套装') then
+        unit:remove_item('真金套装')
+        unit:add_item('铂金套装')
+        self:succeed()
+        return
+    end
+
     if unit:has_item('真金剑') then
         unit:remove_item('真金剑')
         unit:add_item('铂金剑')
