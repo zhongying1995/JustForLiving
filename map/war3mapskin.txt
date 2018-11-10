@@ -1,2 +1,4 @@
 [CustomSkin]
 IdlePeon=ReplaceableTextures\CommandButtons\BTNWisp.blp
+[FrameDef]
+BONUS_DAMAGE= - 主属性不增加攻击力
