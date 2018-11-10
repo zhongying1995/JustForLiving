@@ -1,3 +1,5 @@
 ac.item['黄铜剑']{
-    war3_id = 'I10S'
+    war3_id = 'I10S',
+    attack = 2055,
+	str = 925,
 }
