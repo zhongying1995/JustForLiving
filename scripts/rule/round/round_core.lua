@@ -1,7 +1,7 @@
-local Normal_round = require 'rule.round.normal_round'
-local Boss_round = require 'rule.round.boss_round'
-local Special_round = require 'rule.round.special_round'
-local Final_round = require 'rule.round.final_round'
+-- local Normal_round = require 'rule.round.normal_round'
+-- local Boss_round = require 'rule.round.boss_round'
+-- local Special_round = require 'rule.round.special_round'
+-- local Final_round = require 'rule.round.final_round'
 local Fogmodifier = Router.fogmodifier
 local Rects = require 'base.rects'
 
@@ -87,7 +87,13 @@ function mt:init(  )
 end
 
 ac.game:event '游戏-开始回合逻辑'(function ()
-    Round_core:init()
+    --Round_core:init()
+    -- local round = require 'rule.round.normal_round.normal_round_guard'
+    -- round:init()
+    -- local round = require 'rule.round.boss_round.boss_round_guard'
+    local round = require 'rule.round.normal_round.normal_round_exist'
+    round:init()
+    round:create()
 end)
 
 return Round_core
