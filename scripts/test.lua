@@ -1,9 +1,9 @@
 local jass = require 'jass.common'
 local japi = require 'jass.japi'
-local Dialog = Router.dialog
-local Player = Router.player
-local Game_degree = require 'rule.model.game_degree'
-local Game_model = require 'rule.model.game_model'
+-- local Dialog = Router.dialog
+-- local Player = Router.player
+-- local Game_degree = require 'rule.model.game_degree'
+-- local Game_model = require 'rule.model.game_model'
 
 local function check_multiboard(  )
     local Multiboard = Router.multiboard
@@ -421,7 +421,7 @@ local function test_model()
         -- local x, y = point:get()
         -- check_item(u1)
         -- check_damage(u1)
-        -- jass.CreateItem(Base.string2id('rat9'), 0, 0)
+        -- jass.CreateItem(base.string2id('rat9'), 0, 0)
         -- ac.wait(3500, function()
         --     check_attribute(u1)
         -- end)
@@ -432,15 +432,84 @@ local function test_model()
     end)
 end
 
+local function check_all_item()
+
+    local function check(item_names, fix_name, fix_lv)
+        local hero = ac.player[1].hero
+        for i = 1, 6 do
+            local it = hero:get_slot_item(i)
+            if it then
+                ac.player[1]:send_msg('移除：' .. it:get_name())
+                hero:remove_item(it)
+            end
+        end
+        local i = 1
+        ac.timer(2*1000, #item_names, function()
+            hero:add_item(fix_name)
+            hero:add_item(item_names[i])
+            i = i + 1
+            local Unit_button = Router.unit_button
+            local button = Unit_button:new(fix_lv, hero, hero)
+            if button then
+                button:click()
+            end
+        end)
+    end
+
+    local all_item_names = {
+        {
+            '纯银魂珠','纯银项链','纯银剑','纯银弓',
+            '纯银杖','纯银镰','纯银铃','纯银套装',
+        },
+        {
+            '真金魂珠','真金项链','真金剑','真金弓',
+            '真金杖','真金镰','真金铃','真金套装',
+        },
+        {
+            '铂金魂珠','铂金项链','铂金剑','铂金弓',
+            '铂金杖','铂金镰','铂金铃','铂金套装',
+        },
+        {
+            '钻石魂珠','钻石项链','钻石剑','钻石弓',
+            --'钻石杖','钻石镰','钻石铃','钻石套装',
+        },
+    }
+
+    local all_fix_names = {
+        '真金',
+        '铂金',
+        '钻石',
+        '黑耀',
+    }
+
+    local all_fix_lvs = {
+        '合成黄金级',
+        '合成铂金级',
+        '合成钻石级',
+        '合成星耀级',
+    }
+    
+    -- for i = 1, #all_fix_lvs do
+        local i = 4
+        print(all_fix_lvs[i])
+        check(all_item_names[i], all_fix_names[i], all_fix_lvs[i])
+    -- end
+
+end
+
+
 if not base.release then
     -- test_model()
     ac.player[1]:add_gold(10000)
-    ac.wait(1000, function()
-        print('选择游戏难度')
-        if not Map_game.test then
-            Map_game.test = true
-            ac.game:event_notify('游戏-选择难度')
-        end
-    end)
-    
+    -- check_all_item()
 end
+
+--暂时这样吧
+print('test model!!')
+ac.wait(1000, function()
+    print('选择游戏难度', jass.Player(0))
+    if not Map_game.test then
+        Map_game.test = true
+        ac.game:event_notify('游戏-选择难度')
+    end
+end)
