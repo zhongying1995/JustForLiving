@@ -67,7 +67,7 @@ function mt:on_click()
         self:succeed()
         return
     end
-
+    self:failed('[合成失败]:你没有真金级别的装备！')
 end
 
 function mt:failed( msg )

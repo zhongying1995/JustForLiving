@@ -16,7 +16,7 @@ function mt:on_click()
     local i = math.random( 1, 100 )
     if unit:has_item('钻石魂珠') then
         if i <= self.failed_rate then
-            self:failed('合成失败！黑耀被融化了！', false)
+            self:failed('[合成失败]:黑耀被融化了！', false)
             return
         end
         unit:remove_item('钻石魂珠')
@@ -27,7 +27,7 @@ function mt:on_click()
 
     if unit:has_item('钻石项链') then
         if i <= self.failed_rate then
-            self:failed('合成失败！黑耀被融化了！', false)
+            self:failed('[合成失败]:黑耀被融化了！', false)
             return
         end
         unit:remove_item('钻石项链')
@@ -38,7 +38,7 @@ function mt:on_click()
 
     if unit:has_item('钻石套装') then
         if i <= self.failed_rate then
-            self:failed('合成失败！黑耀被融化了！', false)
+            self:failed('[合成失败]:黑耀被融化了！', false)
             return
         end
         unit:remove_item('钻石套装')
@@ -49,7 +49,7 @@ function mt:on_click()
 
     if unit:has_item('钻石剑') then
         if i <= self.failed_rate then
-            self:failed('合成失败！黑耀被融化了！', false)
+            self:failed('[合成失败]:黑耀被融化了！', false)
             return
         end
         unit:remove_item('钻石剑')
@@ -60,7 +60,7 @@ function mt:on_click()
 
     if unit:has_item('钻石弓') then
         if i <= self.failed_rate then
-            self:failed('合成失败！黑耀被融化了！', false)
+            self:failed('[合成失败]:黑耀被融化了！', false)
             return
         end
         unit:remove_item('钻石弓')
@@ -71,7 +71,7 @@ function mt:on_click()
 
     if unit:has_item('钻石杖') then
         if i <= self.failed_rate then
-            self:failed('合成失败！黑耀被融化了！', false)
+            self:failed('[合成失败]:黑耀被融化了！', false)
             return
         end
         unit:remove_item('钻石杖')
@@ -82,7 +82,7 @@ function mt:on_click()
 
     if unit:has_item('钻石铃') then
         if i <= self.failed_rate then
-            self:failed('合成失败！黑耀被融化了！', false)
+            self:failed('[合成失败]:黑耀被融化了！', false)
             return
         end
         unit:remove_item('钻石铃')
@@ -93,7 +93,7 @@ function mt:on_click()
 
     if unit:has_item('钻石镰') then
         if i <= self.failed_rate then
-            self:failed('合成失败！黑耀被融化了！', false)
+            self:failed('[合成失败]:黑耀被融化了！', false)
             return
         end
         unit:remove_item('钻石镰')
@@ -101,7 +101,7 @@ function mt:on_click()
         self:succeed()
         return
     end
-
+    self:failed('[合成失败]:你没有钻石级别的装备！')
 end
 
 --  提示信息

@@ -8,7 +8,7 @@ local mt = ac.unit_button['合成废铁级']{
 function mt:on_click()
     local unit = self.clicker
     if not unit:has_item('精铁') then
-        self:failed('你没有精铁！')
+        self:failed('[合成失败]:你没有精铁！')
         return
     end
 
@@ -60,7 +60,7 @@ function mt:on_click()
         self:succeed()
         return
     end
-
+    self:failed('[合成失败]:你没有桃木级别的装备！')
 end
 
 function mt:failed( msg )
