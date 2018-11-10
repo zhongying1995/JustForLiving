@@ -2,14 +2,6 @@
 
 --装备性物品，8个等级 + 烂木级
 
---武器攻击力
-
-for i = 1, 8 do
-	atk = atk * 2
-end
-
---剑，弓，镰，杖，铃
-local atks = {64, 69, 74, 56, 48}
 
 --贝塞尔公式
 --  最小值
@@ -33,6 +25,28 @@ local function bezier_formula(min, max, i, factor1, factor2)
 	return p0*(1-i)^3 + 3*p1*i*(1-i)^2 + 3*p2*i^2*(1-i) + p3*i^3
 end
 
+
+--武器攻击力
+--剑，弓，镰，杖，铃
+local types = {
+    --最小值，最大值
+    --剑
+    {128, 10240},
+    --弓
+    {138, 11264},
+    --镰
+    {148, 12312},
+    --杖
+    {112, 9068},
+    --铃
+    {96, 8000},
+}
+}
+for type_i = 1, #types do
+	for i = 1, 8 do
+		math.ceil(bezier_formula(types[type_i][1], types[type_i][2], (i-1)/7, 5, 2))
+	end
+end
 
 --武器属性：
 --剑，弓，镰，杖，铃
