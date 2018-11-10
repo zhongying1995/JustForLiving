@@ -115,6 +115,8 @@ function mt:failed( msg , rebate)
         local lumber = Unit.get_slk_by_id(self.war3_id, 'lumbercost', 0)
         p:add_gold(gold)
         p:add_lumber(lumber)
+    else
+        unit:remove_item('钻石')
     end
 end
 
