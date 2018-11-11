@@ -65,3 +65,14 @@ for type_i = 1, #types do
 end
 
 
+--魂珠属性、脱战生命回复：
+local types = {
+    --属性，脱战生命回复
+    {30, 6666},
+    {5, 333},
+}
+for i = 1, 8 do
+	local attr = math.ceil(bezier_formula(types[1][1], types[1][2], (i-1)/7, 9, 3))
+	local life = math.ceil(bezier_formula(types[2][1], types[2][2], (i-1)/7, 6, 1.6))
+end
+
