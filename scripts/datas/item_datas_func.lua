@@ -76,3 +76,13 @@ for i = 1, 8 do
 	local life = math.ceil(bezier_formula(types[2][1], types[2][2], (i-1)/7, 6, 1.6))
 end
 
+--套装
+local types = {
+    --护甲，移速
+    {5, 816},
+    {35, 100},
+}
+for i = 1, 8 do
+	local def = math.ceil(bezier_formula(types[1][1], types[1][2], (i-1)/7, 10, 3))
+	local mov = math.ceil(bezier_formula(types[2][1], types[2][2], (i-1)/7, 1.3, 1.2))
+end
