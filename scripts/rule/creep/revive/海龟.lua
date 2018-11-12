@@ -5,11 +5,11 @@ Creep_revive['小海龟']{
 
     revive_time = 10,
 
-    revive_callback = function(unit)
+    revive_callback = function(self, unit)
         print('小海龟复活啦！！！')
     end,
 
-    death_callback = function(unit)
+    death_callback = function(self, unit)
         print('小海龟刚刚死亡，等等复活！')
     end,
 }
