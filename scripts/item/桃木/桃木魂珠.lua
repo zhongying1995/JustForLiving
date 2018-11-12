@@ -1,4 +1,4 @@
-ac.item['桃木魂珠']{
+local mt = ac.item['桃木魂珠']{
     war3_id = 'I10A',
     attr = 30,
     inactive_life_recovery = 5,
