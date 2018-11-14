@@ -29,7 +29,7 @@ function mt:register_creep_revive_trg( unit )
     unit:event '单位-死亡'(function(trg, killed, killer)
 
         if self.death_callback then
-            self:death_callback(u)
+            self:death_callback(killed, killer)
         end
 
         ac.wait(self.revive_time * 1000, function()
