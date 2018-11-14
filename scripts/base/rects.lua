@@ -72,5 +72,11 @@ Map_rects['默认视野'] = Rect.j_rect('DefaultFog')
 
 Map_rects['选英雄区域'] = Rect.j_rect('ChooseHero')
 
+Map_rects['青蛙区域'] = {
+    Rect.j_rect('Creep_frog_01'),
+    Rect.j_rect('Creep_frog_02'),
+    Rect.j_rect('Creep_frog_03'),
+    Rect.j_rect('Creep_frog_04'),
+}
 
 return Map_rects
