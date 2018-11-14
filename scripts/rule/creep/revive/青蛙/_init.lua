@@ -1,1 +1,1 @@
--- require 'rule.creep.revive.青蛙.'
+require 'rule.creep.revive.青蛙.青蛙'
