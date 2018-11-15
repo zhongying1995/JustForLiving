@@ -57,3 +57,10 @@ function mt:is_enable_add_bought_skill()
     print('get_bought_skill_count:', self:get_bought_skill_count())
     return self:get_bought_skill_count() < self.max_enable_bought_skill
 end
+
+
+--获取英雄的武器类型
+--  @英雄的武器，如果没有，则默认返回剑类型
+function mt:get_weapon_type()
+    return self.weapon_type or '剑'
+end
