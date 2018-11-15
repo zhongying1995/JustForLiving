@@ -10,6 +10,9 @@ mt.second = 0
 --计时器
 mt.timer = nil
 
+--计时周期,s
+mt.pulse = 1
+
 --获取当前游戏时间
 --  @分钟，秒钟
 function mt:get_time(  )
@@ -30,8 +33,9 @@ function mt:get_second()
 end
 
 --开始记录游戏时间
-function mt:start()
+function mt:start(pulse)
     self.second = 0
+    self.pulse = pulse or self.pulse
     if not self.timer then
         self.timer = ac.loop(self.pulse*1000, function()
             self.second = self.second + 1
