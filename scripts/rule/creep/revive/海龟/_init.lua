@@ -1,1 +1,1 @@
--- require 'rule.creep.revive.海龟.'
+require 'rule.creep.revive.海龟.小海龟'
