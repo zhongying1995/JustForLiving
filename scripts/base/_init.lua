@@ -1,4 +1,4 @@
-
+require 'base.time._init'
 require 'base.player'
 require 'base.rects'
 require 'base.regions'
