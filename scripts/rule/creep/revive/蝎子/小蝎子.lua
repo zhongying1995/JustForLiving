@@ -12,6 +12,9 @@ local mt = Creep_revive['小蝎子']{
 
     --超出这个时间不会掉落装备
     drop_superior_limit = 25,
+
+    --时间影响因子
+    time_factor = 4,
 }
 
 local drop_item_list = {
@@ -25,7 +28,7 @@ function mt:death_callback( unit, killer )
     if time > self.drop_superior_limit then
         return
     end
-    local rate = time * 5
+    local rate = time * self.time_factor
     local i
     local is_lucky, roll = killer:get_owner():roll_fortune(rate)
     if is_lucky then
