@@ -15,7 +15,7 @@ mt.timer = nil
 function mt:get_time(  )
     local min = self:get_minute()
     local sec = self:get_second() - min*60
-    return min. sec
+    return min, sec
 end
 
 --获得游戏进行了多少分钟
