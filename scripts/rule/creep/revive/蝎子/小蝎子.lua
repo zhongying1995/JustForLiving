@@ -14,7 +14,7 @@ local mt = Creep_revive['小蝎子']{
     drop_superior_limit = 25,
 
     --时间影响因子
-    time_factor = 4,
+    time_factor = 3.5,
 }
 
 local drop_item_list = {
