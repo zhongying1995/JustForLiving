@@ -45,6 +45,18 @@ function mt:get_wild_creep_player()
     return Player.force[2][1]
 end
 
+--抽点
+--  期待的概率
+--  [最小的概率]
+--  [最大的概率]
+function mt:roll_fortune( roll, min, max )
+    local roll = roll or 50
+    local min = min or 1
+    local max = max or 100
+    local rate = math.random(min, max)
+    return roll >= rate
+end
+
 
 local function alliance(  )
     --控制玩家结盟
