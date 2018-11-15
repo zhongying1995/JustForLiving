@@ -54,7 +54,7 @@ function mt:roll_fortune( roll, min, max )
     local min = min or 1
     local max = max or 100
     local rate = math.random(min, max)
-    return roll >= rate
+    return roll >= rate, rate
 end
 
 
