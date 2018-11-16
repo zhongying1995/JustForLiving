@@ -93,7 +93,6 @@ function Creep_revive:save_default_creeps()
 
     for _, u in ac.selector()
         :add_filter(function(u)
-            print('filter:', u:get_name())
             if all_revive_creeps[u:get_id()] then
                 return true
             end
