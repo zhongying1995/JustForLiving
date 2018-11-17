@@ -60,7 +60,7 @@ function mt:register(data)
         self:old_on_click(hero)
     end
 
-    ac.unit_button[name](data)
+    return ac.unit_button[name](data)
 end
 
 
