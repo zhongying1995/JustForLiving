@@ -1,1 +1,6 @@
 require 'rule.shop.skill_shop.aura_skill.耐久光环'
+require 'rule.shop.skill_shop.aura_skill.专注光环'
+require 'rule.shop.skill_shop.aura_skill.吸血光环'
+require 'rule.shop.skill_shop.aura_skill.霜冻光环'
+require 'rule.shop.skill_shop.aura_skill.命令光环'
+require 'rule.shop.skill_shop.aura_skill.腐蚀光环'
