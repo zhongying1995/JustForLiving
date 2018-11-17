@@ -86,6 +86,7 @@ function mt:remove(...)
     if self.on_remove then
         self:on_remove(...)
     end
+    self.player._mission_list[name] = nil
 end
 
 
@@ -146,7 +147,6 @@ function Player.__index:remove_mission(name, ...)
     local mission = self:has_mission(name)
     if mission then
         mission:remove(...)
-        self._mission_list[name] = nil
     end
 end
 
