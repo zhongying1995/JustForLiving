@@ -10,10 +10,10 @@ local mt = Creep_revive['小海龟']{
     drop_superior_limit = 25,
 
     --时间影响因子
-    time_factor = 3.5,
+    time_factor = 2,
 
     --基础概率
-    base_rate = 20,
+    base_rate = 40,
 }
 
 mt.drop_item_list = {
@@ -37,7 +37,15 @@ function mt:death_callback( unit, killer )
         if is_dog then
             weapon_type = killer:get_weapon_type()
         else
-            weapon_type = next(self.drop_item_list)
+            for k, v in pairs(self.drop_item_list) do
+                if not weapon_type then
+                    weapon_type = k
+                else
+                    if math.random() < 0.5 then
+                        weapon_type = k
+                    end
+                end
+            end
         end
     end
     if weapon_type then
