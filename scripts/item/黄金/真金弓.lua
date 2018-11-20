@@ -3,4 +3,5 @@ ac.item['真金弓']{
     attack = 5149,
 	agi = 2463,
     item_type = '武器',
+    weapon_type = '弓'
 }
