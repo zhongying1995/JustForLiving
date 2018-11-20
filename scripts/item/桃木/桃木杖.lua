@@ -3,4 +3,5 @@ ac.item['桃木杖']{
     attack = 112,
 	int = 25,
     item_type = '武器',
+    weapon_type = '杖',
 }
