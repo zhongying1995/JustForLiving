@@ -7,7 +7,7 @@ function mt:is_weapon(  )
 end
 
 --物品是否是项链
-function mt:is_Necklace(  )
+function mt:is_necklace(  )
     return self:get_item_type() == '项链'
 end
 
