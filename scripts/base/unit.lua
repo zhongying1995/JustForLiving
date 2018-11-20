@@ -10,3 +10,11 @@ local mt = Unit.__index
 function mt:roll_fortune( rate, min, max )
     return self:get_owner():roll_fortune(rate, min, max)
 end
+
+--获取单位可以拿去的武器类型
+function mt:is_enable_hold_weapon( it )
+    local type = it:get_weapon_type()
+    if self.weapon_type == type then
+        return true
+    end
+end

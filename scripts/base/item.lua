@@ -22,6 +22,11 @@ function mt:is_corselet(  )
     return self:get_item_type() == '套装'
 end
 
+--获取武器的类型
+function mt:get_weapon_type()
+    return self.weapon_type
+end
+
 --单位是否拥有武器
 --  [应该被忽略的物品/表]
 function Unit.__index:is_has_weapon( igorn_items )
