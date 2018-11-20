@@ -23,9 +23,14 @@ function mt:is_corselet(  )
 end
 
 --单位是否拥有武器
---  [应该被忽略的物品表]
+--  [应该被忽略的物品/表]
 function Unit.__index:is_has_weapon( igorn_items )
-    local igorn_items = igorn_items or {}
+    local igorn_items = igorn_items
+    if not igorn_items then
+        igorn_items = {}
+    elseif igorn_items.type == 'item' then
+        igorn_items = {igorn_items}
+    end
     for it in self:each_item() do
         if it:is_weapon() then
             local result = true
@@ -45,7 +50,12 @@ end
 --单位是否拥有项链
 --  [应该被忽略的物品表]
 function Unit.__index:is_has_necklace( igorn_items )
-    local igorn_items = igorn_items or {}
+    local igorn_items = igorn_items
+    if not igorn_items then
+        igorn_items = {}
+    elseif igorn_items.type == 'item' then
+        igorn_items = {igorn_items}
+    end
     for it in self:each_item() do
         if it:is_necklace() then
             local result = true
@@ -65,7 +75,12 @@ end
 --单位是否拥有魂珠
 --  [应该被忽略的物品表]
 function Unit.__index:is_has_soul_bead( igorn_items )
-    local igorn_items = igorn_items or {}
+    local igorn_items = igorn_items
+    if not igorn_items then
+        igorn_items = {}
+    elseif igorn_items.type == 'item' then
+        igorn_items = {igorn_items}
+    end
     for it in self:each_item() do
         if it:is_soul_bead() then
             local result = true
@@ -85,7 +100,12 @@ end
 --单位是否拥有套装
 --  [应该被忽略的物品表]
 function Unit.__index:is_has_corselet( igorn_items )
-    local igorn_items = igorn_items or {}
+    local igorn_items = igorn_items
+    if not igorn_items then
+        igorn_items = {}
+    elseif igorn_items.type == 'item' then
+        igorn_items = {igorn_items}
+    end
     for it in self:each_item() do
         if it:is_corselet() then
             local result = true
