@@ -2,6 +2,7 @@ local mt = ac.item['黄铜魂珠']{
     war3_id = 'I10C',
     attr = 876,
     inactive_life_recovery = 70,
+    item_type = '魂珠',
 }
 
 function mt:on_add()
