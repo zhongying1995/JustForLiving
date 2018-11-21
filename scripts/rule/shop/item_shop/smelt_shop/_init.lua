@@ -1,0 +1,1 @@
+require 'rule.shop.item_shop.smelt_shop.专属合成'
