@@ -9,6 +9,22 @@ local mt = ac.item['神石']{
             mixture = '龙之盾锻造书',
             refiner = '龙之盾',
         },
+        ['黑暗游侠'] = {
+            mixture = '漆黑之弓锻造书',
+            refiner = '漆黑之弓',
+        },
+        ['潜影者'] = {
+            mixture = '割魂之刃锻造书',
+            refiner = '割魂之刃',
+        },
+        ['元素法师'] = {
+            mixture = '元素法杖锻造书',
+            refiner = '元素法杖',
+        },
+        ['神圣牧师'] = {
+            mixture = '拯救之书锻造书',
+            refiner = '拯救之书',
+        },
     }
 }
 
