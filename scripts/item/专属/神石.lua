@@ -2,6 +2,14 @@ local mt = ac.item['神石']{
     war3_id = 'I100',
     --最大的可用次数
     max_stack = 100,
+
+    --合成列表
+    synthetic_list = {
+        ['龙骑士'] = {
+            mixture = '龙之盾锻造书',
+            refiner = '龙之盾',
+        },
+    }
 }
 
 function mt:on_add()
