@@ -6,8 +6,6 @@ local mt = Creep_revive['大海龟']{
 
     revive_time = 20,
 
-    --超出这个时间不会掉落装备
-    drop_superior_limit = 0,
 
     time_factor = 5,
 
@@ -30,9 +28,6 @@ mt.drop_item_list = {
 
 function mt:death_callback( unit, killer )
     local time = Game_time:get_time()
-    if time > self.drop_superior_limit then
-        return
-    end
     local rate = time * self.time_factor + self.base_rate
     local index
     local item_list
