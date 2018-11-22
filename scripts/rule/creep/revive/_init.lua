@@ -10,5 +10,6 @@ require 'rule.creep.revive.蝎子._init'
 require 'rule.creep.revive.螃蟹._init'
 require 'rule.creep.revive.雪怪._init'
 require 'rule.creep.revive.青蛙._init'
+require 'rule.creep.revive.神龙._init'
 
 Creep_revive:save_default_creeps()
