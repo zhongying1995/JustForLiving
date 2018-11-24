@@ -86,6 +86,17 @@ function mt:use_normal_defense_invade_pattern()
     Normal_round.get_attack_target = new_invade_pattern
 end
 
+--获取当前的模式
+function mt:get_game_model()
+    return self._game_model
+end
+
+--设置当前的难度
+function mt:set_game_model(model)
+    self._game_model = model
+end
+
+--获得当前模式的名字
 function mt:get_game_model_name(  )
     return self.name
 end
@@ -97,6 +108,7 @@ mt['生存模式'] = {
         回合内死亡不会复活，直到新的回合开始
     ]],
     action = function(self, player)
+        Game_model:set_game_model(self)
         print(player:tostring(), '点击了 生存模式')
         ac.player.self:send_msg(self.msg, 20)
         local degree = Map_game.game_degree
@@ -116,6 +128,7 @@ mt['防守模式'] = {
         进攻怪会直接对建筑发起进攻
     ]],
     action = function(self, player)
+        Game_model:set_game_model(self)
         print(player:tostring(), '点击了 防守模式')
         ac.player.self:send_msg(self.msg, 20)
     end
@@ -127,9 +140,10 @@ mt['生存+防守模式'] = {
         年轻？？？
     ]],
     action = function(self, player)
+        Game_model:set_game_model(self)
         print(player:tostring(), '点击了 生存+防守模式')
         ac.player.self:send_msg(self.msg, 30)
-end
+    end
 }
 
 local buf = ac.buff['进攻怪-发狂']{
