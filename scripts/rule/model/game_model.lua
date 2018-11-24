@@ -15,6 +15,7 @@ setmetatable(mt, {
         if type(v) == 'table' and v.action then
             setmetatable(v, v)
             v.__index = Game_model
+            v.name = k
         end
         rawset(t, k, v)
     end
@@ -83,6 +84,10 @@ function mt:use_normal_defense_invade_pattern()
         
     end
     Normal_round.get_attack_target = new_invade_pattern
+end
+
+function mt:get_game_model_name(  )
+    return self.name
 end
 
 

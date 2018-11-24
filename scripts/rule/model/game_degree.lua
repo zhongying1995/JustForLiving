@@ -11,6 +11,7 @@ setmetatable(mt, {
         if type(v) == 'table' and v.action then
             setmetatable(v, v)
             v.__index = Game_degree
+            v.name = k
         end
         rawset(t, k, v)
     end
@@ -70,6 +71,15 @@ function mt:set_game_degree(degree)
     self._game_degree = degree
 end
 
+--获得当前难度的等级
+function  mt:get_game_degree_level(  )
+    return self.level
+end
+
+--获得当前难度的名字
+function  mt:get_game_degree_name(  )
+    return self.name
+end
 
 mt['小白过家家级'] = {
     msg = [[
