@@ -69,8 +69,9 @@ degree_dialog = {
                 choose_degree('老鸟劝退级', player)
                 close_dialog(dialog)
                 local model_dialog = open_model_dialog(player)
-                model_dialog:add_button(model_dialog.hide_button)
-                model_dialog:refresh()
+                --暂时不做生存+防守模式
+                -- model_dialog:add_button(model_dialog.hide_button)
+                -- model_dialog:refresh()
             end,
         },
     },
