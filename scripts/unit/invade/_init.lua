@@ -5,3 +5,4 @@
 --O100 - O105为6波boss数据
 
 require 'unit.invade.normal_registries'
+require 'unit.invade.special_registries'
