@@ -125,10 +125,12 @@ function mt:init(  )
     end
     Normal_round:init()
     Boss_round:init()
+    Final_round:init()
 
     self.normal_round = Normal_round
     self.boss_round = Boss_round
     self.special_round = Special_round
+    self.final_round = Final_round
     if self.special_round then
         self.special_round:init()
     end

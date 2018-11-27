@@ -1,5 +1,5 @@
 local Round = require 'rule.round.round'
-local Boss_datas = require 'rule.round.boss_round.boss_round_datas'
+local Boss_datas = require 'rule.round.special_round.final_round_datas'
 local Map_rects = require 'base.rects'
 local Timerdialog = Router.timerdialog
 local Player = Router.player
@@ -45,7 +45,7 @@ end
 
 function mt:create()
     self.state = '创建'
-    self.creep_datas = Creep_datas:get_datasx( )
+    self.creep_datas = Boss_datas:get_datas( )
     self:prepare()
 end
 
@@ -108,26 +108,18 @@ end
 
 function mt:create_invades(  )
     local datas = self.creep_datas
-    local boss_datas = datas.datas.boss_datas
+    local boss_datas = datas.boss_datas
     for i = 1, #boss_datas do
-        local current_point = self.birth_rects[i % #boss_datas]:get_point()
+        local current_point = self.birth_rects[math.random(1, #self.birth_rects)]:get_point()
         self:show_boss_create_candy(current_point)
-        local target = self:get_attack_target()
+        local target = self:get_attack_target(current_point)
 
         local data = datas.boss_datas[i]
-        local point = self.birth_rects
         local boss_data = data.boss
         local name = boss_data.name
         local u = Player.force[2][1]:create_unit(name, current_point, math.random(0,360))
         u:issue_order('attack', target)
 
-        local minion_data = data.minion
-        local name = minion_data.name
-        local count = minion_data.count
-        for j = 1, count do
-            local u = Player.force[2][1]:create_unit(name, current_point, math.random(0,360))
-            u:issue_order('attack', target)
-        end
     end
 
 end
