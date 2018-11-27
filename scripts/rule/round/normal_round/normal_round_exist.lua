@@ -125,7 +125,7 @@ function mt:get_attack_target( u )
     return hero
 end
 
-function mt:create_attack_unit( point )
+function mt:create_invade_creep( point )
     local name = self.creep_datas.name
     local u = Player.force[2][1]:create_unit(name, point, math.random(0,360))
     local target = self:get_attack_target(u)
@@ -162,7 +162,7 @@ function mt:create_invades(  )
                 ef:remove()
             end)
             ac.timer(self.focus_style_time, number_1, function ( t )
-                self:create_attack_unit( rct:get_random_point() )
+                self:create_invade_creep( rct:get_random_point() )
             end)
         end
     end
@@ -171,7 +171,7 @@ function mt:create_invades(  )
         ac.timer(self.disperse_style_time, number_2, function ( t )
             local point = rct:get_random_point()
             point:add_effect(self.disperse_effect_model):remove()
-            self:create_attack_unit( point )
+            self:create_invade_creep( point )
         end)
     end)
     print('创建的野怪数量：', numbers, number_1, number_1 * (birth_rect_count-1), number_2)
@@ -196,7 +196,7 @@ function mt:start(  )
     self.invade_unit_dead_trg = ac.game:event '单位-死亡'(function ( trg, unit, killer )
         if unit._is_invade_unit then
             self.invade_unit_dead_counts = self.invade_unit_dead_counts + 1
-            print(self.invade_unit_dead_counts, self.invade_unit_counts)
+            print('进攻怪死亡：', self.invade_unit_dead_counts, self.invade_unit_counts)
             if self.invade_unit_dead_counts >= self.invade_unit_counts then
                 self:finish()
             end

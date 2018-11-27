@@ -92,7 +92,7 @@ local function get_attack_hero(  )
     return ac.player[1].hero
 end
 
-function mt:create_attack_boss( point )
+function mt:create_invade_creep( point )
     local target = get_attack_hero()
     if not target then
         target = ac.point(0, 0)
@@ -133,7 +133,7 @@ function mt:create_invades(  )
     local creep_birth_rects = Map_rects['进攻怪物出生点-生存']
     local birth_rect_index = math.random(1, #creep_birth_rects)
     local rect = creep_birth_rects[birth_rect_index]
-    local numbers = self:create_attack_boss( rect:get_point() )
+    local numbers = self:create_invade_creep( rect:get_point() )
 
     return numbers
 end

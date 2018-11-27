@@ -87,7 +87,7 @@ function mt:get_attack_target(u)
 end
 
 
-function mt:create_attack_boss(point)
+function mt:create_invade_creep(point)
 
     local tower_target = self.main_tower
 
@@ -154,7 +154,7 @@ function mt:boss_come_down_show(point)
             for i = 1, #ef_3 do
                 ef_3[i]:remove()
             end
-            self:create_attack_boss(point)
+            self:create_invade_creep(point)
         end)
         
     end)

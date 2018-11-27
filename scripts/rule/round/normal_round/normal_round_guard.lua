@@ -87,7 +87,7 @@ function mt:get_attack_target(u)
 end
 
 --创建一个进攻单位
-function mt:create_attack_unit(point)
+function mt:create_invade_creep(point)
     local name = self.creep_datas.name
     local u = Player.force[2][1]:create_unit(name, point, math.random(0,360))
     local target = self:get_attack_target(u)
@@ -121,7 +121,7 @@ function mt:create_invades()
         local ef = rct:get_point():add_effect(self.focus_effect_model)
         local index = 0
         ac.loop(self.invade_gap_time * 1000, function ( t )
-            self:create_attack_unit( rct:get_point() )
+            self:create_invade_creep( rct:get_point() )
             index = index + 1
             if index == number then
                 t:remove()
