@@ -34,3 +34,19 @@ ac.unit['特殊进攻怪-物免']{
     war3_id = 'h703',
     is_invade_creep = true,
 }
+
+--注册boss
+ac.unit['最终Boss-1号']{
+    war3_id = 'O106',
+    is_invade_creep = true,
+    is_invade_boss = true,
+    is_final_boss = true,
+}
+
+--注册boss
+ac.unit['最终Boss-2号']{
+    war3_id = 'O107',
+    is_invade_creep = true,
+    is_invade_boss = true,
+    is_final_boss = true,
+}

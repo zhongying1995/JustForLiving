@@ -14,17 +14,19 @@ mt[1] = {
     boss_datas = {
         {
             boss = {
-                name = '',
+                name = '最终Boss-1号',
             },
-            minion = {
-                name = '',
-                count = 2,
+        },
+        {
+            boss = {
+                name = '最终Boss-2号',
             },
         },
     },
     msg = '|cffff0000[WARNING!!]|r|cffff0000[WARNING!!]|r|cffff0000[WARNING!!]|r',
     count = 80,
     prepare_time = 40,
+    clear_time = 120,
 }
 
 
