@@ -100,7 +100,7 @@ function mt:init(  )
     local Special_round
     local Final_round = require 'rule.round.special_round.final_round'
     local game_degree = Game_degree:get_game_degree()
-    local game_model = Game_degree:get_game_degree()
+    local game_model = Game_model:get_game_model()
 
     local lv = game_degree:get_game_degree_level()
     if lv == 1 then
