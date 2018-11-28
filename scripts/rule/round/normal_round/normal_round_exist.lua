@@ -183,7 +183,6 @@ function mt:start(  )
     self.state = '开始'
     self:show_start_round_msg()
     self:create_invades()
-    self.invade_unit_counts = 0
     self.timerdialog:set_time(self.creep_datas.clear_time)
         :set_title('清除怪物倒计时：')
         :set_on_expire_listener(function (  )
@@ -193,6 +192,7 @@ function mt:start(  )
         :run()
 
     self.invade_unit_dead_counts = 0
+    self.invade_unit_counts = 0
     self.invade_unit_dead_trg = ac.game:event '单位-死亡'(function ( trg, unit, killer )
         if unit._is_invade_unit then
             self.invade_unit_dead_counts = self.invade_unit_dead_counts + 1
@@ -205,12 +205,14 @@ function mt:start(  )
 
     --监听动态增加进攻怪数量
     self.invade_unit_create_trg = ac.game:event '单位-创建'(function(trg, unit)
-        if unit:get_owner() == Player.force[2][1] and not unit._is_invade_unit then
+        if unit:get_owner() == Player.force[2][1] and unit.is_invade_creep then
+            unit._is_invade_unit = true
+            print('进攻怪创建：', self.invade_unit_dead_counts, self.invade_unit_counts)
             self.invade_unit_counts = self.invade_unit_counts + 1
         end
     end)
 
-    self.invade_unit_attack_timer = ac.loop(5*1000, function(t)
+    self.invade_unit_attack_timer = ac.loop(1*1000, function(t)
         for _, u in pairs(self.all_creeps) do
             if u:get_order() ~= 'attack' then
                 local target = self:get_attack_target(u)
@@ -231,6 +233,13 @@ function mt:start(  )
         end
     end)
 
+end
+
+function mt:get_remainder_creeps(  )
+    if not self.remainder_creeps then
+        self.remainder_creeps = {}
+    end
+    return self.remainder_creeps
 end
 
 
@@ -262,16 +271,23 @@ function mt:finish( is_reward )
         self.invade_unit_dead_trg:remove()
     end
 
+    if self.invade_unit_create_trg then
+        self.invade_unit_create_trg:remove()
+    end
+
     if self.invade_unit_attack_timer then
         self.invade_unit_attack_timer:remove()
     end
-
+    local tmp = {}
     for _, u in pairs(self.remainder_creeps) do
         if not u:is_alive() then
             u:remove()
             u._is_remainder_invade_unit = nil
+        else
+            table_insert(tmp, u)
         end
     end
+    self.remainder_creeps = tmp
 
     for _, u in pairs(self.all_creeps) do
         if not u:is_alive() then
@@ -283,14 +299,11 @@ function mt:finish( is_reward )
         end
     end
 
-    if is_reward == nil then
-        is_reward = true
-    end
-    if is_reward then
+    if is_reward == nil or is_reward then
         self:award()
-    else
-        self:mete_out_punishment()
     end
+    
+    self:mete_out_punishment()
 
     --回合结束，应该向上交出回合处理权
     ac.game:event_notify( '回合-结束-上交权限', self)

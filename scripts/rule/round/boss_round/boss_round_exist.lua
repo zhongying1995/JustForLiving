@@ -54,10 +54,12 @@ function mt:set_timerdialog(  )
     end
 end
 
-function mt:create(  )
+--  上一个回合，因为boss回合需要里面的数据
+function mt:create(last_round)
     self.state = '创建'
     self.index = self.index + 1
     self.boss_datas = Boss_datas:get_datas_by_index( self.index )
+    self.last_round = last_round
     self:prepare()
 end
 
@@ -155,6 +157,31 @@ function mt:start(  )
         end)
         :show()
         :run()
+
+    --计算上一个回合剩余的怪物
+    local last_round = self.last_round
+    local remain_units = last_round:get_remainder_creeps()
+    local n = #remain_units
+    if n > 0 then
+        ac.timer(1*1000, 3, function (  )
+            local msg = ('[|cffff0000ERROR!|r]：%.f个残余的怪物发生了变异！！！'):format(n)
+            ac.player.self:send_msg(msg, 2)
+        end)
+        local size = 0.25 * self.index
+        local move_speed = 25 * self.index
+        local attack_speed = 50 * self.index
+        local red = 40 + 20 * self.index
+        for _, u in ipairs(remain_units) do
+            u:add_buff('进攻怪-变异'){
+                size = size,
+                move_speed = move_speed,
+                attack_speed = attack_speed,
+                red = red,
+            }
+            u._is_invade_boss = true
+        end
+    end
+    self.invade_unit_counts = self.invade_unit_counts + n
     self.invade_unit_dead_counts = 0
     self.invade_unit_dead_trg = ac.game:event '单位-死亡'(function ( trg, unit, killer )
         if unit._is_invade_boss then
@@ -186,6 +213,39 @@ end
 
 function mt:remove(  )
     
+end
+
+--进攻怪变异buff
+local buff_mt = ac.buff['进攻怪-变异']{
+    size = 0.2,
+    move_speed = 30,
+    attack_speed = 50,
+    red = 50,
+    greed = 150,
+    blue = 150,
+    handle_ef_model = [[Abilities\Spells\Orc\Bloodlust\BloodlustTarget.mdl]],
+    point_ef_model = [[Abilities\Spells\NightElf\BattleRoar\RoarCaster.mdl]],
+}
+
+function buff_mt:on_add()
+    local unit = self.target
+    unit:add_size(self.size)
+    unit:add_move_speed(self.move_speed)
+    unit:add_attack_speed(self.attack_speed)
+    unit:add_color(-self.red, -self.greed, -self.blue)
+    self.handle_ef = unit:add_effect(self.handle_ef_model, 'handle left')
+    unit:get_point():add_effect(self.point_ef_model):remove()
+end
+
+function buff_mt:on_remove(  )
+    local unit = self.target
+    unit:add_size(-self.size)
+    unit:add_move_speed(-self.move_speed)
+    unit:add_attack_speed(-self.attack_speed)
+    unit:add_color(self.red, self.greed, self.blue)
+    if self.handle_ef then
+        self.handle_ef:remove()
+    end
 end
 
 

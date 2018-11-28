@@ -20,6 +20,7 @@ mt.round_run_times = 0
 --  回合调度self
 --  上一个结束的回合
 function mt:switch_round(self, finish_round)
+    self.last_round = finish_round
 
     local type = finish_round and finish_round.type
 
@@ -49,6 +50,7 @@ end
 
 function mt:init_default_round(  )
     self.next_round = self.normal_round
+    self.last_round = self.next_round
     self:create()
 end
 
@@ -56,7 +58,7 @@ end
 function mt:create(  )
     self.round_run_times = self.round_run_times + 1
     self.current_round = self.next_round
-    self.current_round:create()
+    self.current_round:create(self.last_round)
 end
 
 
@@ -79,7 +81,7 @@ end
 
 --开启特殊回合（非最终回合）
 function mt:run_special_round(  )
-    self.special_round:create()
+    self.special_round:create(self.last_round, self.current_round)
 end
 
 --创建战斗区域视野

@@ -6,7 +6,7 @@ Normal_round_datas.__index = mt
 
 --获得该波次的单位数据
 function mt:get_datas_by_index( index )
-    return Normal_round_datas[1]
+    return Normal_round_datas[index]
 end
 
 --获取需要防守的主城
