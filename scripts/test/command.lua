@@ -11,7 +11,7 @@ mt['item'] = {
             for i = 1, n do
                 local it = u:add_item(name)
                 if not it then
-                    player:send_msg('请检查物品名称是否正确：', name)
+                    player:send_msg('请检查物品名称是否正确：'..name, 5)
                 end
             end
         else
