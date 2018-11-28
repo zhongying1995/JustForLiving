@@ -69,8 +69,8 @@ function mt:switch_special_round( is_force )
     end
     if self.next_round ~= self.final_round then
         local rate = math.random(1, 100)
-        if is_force or self.special_round_rate <= rate and self.round_run_times % 2 == 0 then
-            self.run_special_round()
+        if is_force or self.special_round_rate <= rate and (self.round_run_times%2 == 0 or self.round_run_times%3 == 0) then
+            self:run_special_round()
             self.special_round_rate = self.special_round_base_rate
         else
             self.special_round_rate = self.special_round_rate + self.special_round_base_rate
@@ -123,7 +123,7 @@ function mt:init(  )
         Boss_round = require 'rule.round.boss_round.boss_round_exist'
     else
         Normal_round = require 'rule.round.normal_round.normal_round_guard'
-        Boss_round = require 'rule.round.boss_round.boss_round_exist_guard'
+        Boss_round = require 'rule.round.boss_round.boss_round_guard'
     end
     Normal_round:init()
     Boss_round:init()
