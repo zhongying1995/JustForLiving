@@ -297,7 +297,7 @@ local function check_hero()
 end
 
 local function check_mover(u, u2)
-    ---[[
+    --[=[
     local mvr = ac.mover.line{
         source = u,
         -- model = [[Abilities\Spells\Human\MagicSentry\MagicSentryCaster.mdl]],
@@ -324,7 +324,20 @@ local function check_mover(u, u2)
 			max_distance = 3000,
 			skill = true,
     }
-    --]]
+    local mvr = ac.mover.line{
+        start = ac.point(0, 0),
+        model = [[Abilities\Spells\Other\Volcano\VolcanoMissile.mdl]],
+        height = 300,
+		angle = 45,
+		distance = 400,
+		speed = 200,
+		keep = true,
+		skill = true,
+    }
+    function mvr:on_finish()
+        print('运动器到期', self.model)
+    end
+    --]=]
 end
 
 local function check_dialog()
@@ -502,6 +515,7 @@ if not base.release then
     -- test_model()
     ac.player[1]:add_gold(10000)
     -- check_all_item()
+    -- print('移速：', ac.player[1].hero:get_move_speed())
 end
 
 --暂时这样吧
