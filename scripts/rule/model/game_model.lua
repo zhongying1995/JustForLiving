@@ -24,7 +24,7 @@ setmetatable(mt, {
 
 --修改普通回合的进攻算法为加强型的生存模式
 function mt:strengthen_normal_invade_pattern()
-    local Normal_round = Map_game.normal_round
+    local Normal_round = Map_game:get_round('普通回合')
     local normal_round_default_invade_pattern = Normal_round.get_attack_target
     self.normal_round_default_invade_pattern = normal_round_default_invade_pattern
     local rct = Map_rects['战斗区域']
@@ -109,6 +109,9 @@ mt['生存模式'] = {
     ]],
     action = function(self, player)
         Game_model:set_game_model(self)
+        local normal_round = require 'rule.round.normal_round.normal_round_exist'
+        Map_game:set_round('普通回合', normal_round)
+
         print(player:tostring(), '点击了 生存模式')
         ac.player.self:send_msg(self.msg, 20)
         local degree = Map_game.game_degree
@@ -129,6 +132,8 @@ mt['防守模式'] = {
     ]],
     action = function(self, player)
         Game_model:set_game_model(self)
+        local normal_round = require 'rule.round.normal_round.normal_round_guard'
+        Map_game:set_round('普通回合', normal_round)
         print(player:tostring(), '点击了 防守模式')
         ac.player.self:send_msg(self.msg, 20)
     end
