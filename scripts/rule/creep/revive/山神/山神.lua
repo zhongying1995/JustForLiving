@@ -31,7 +31,7 @@ function mt:death_callback( unit, killer )
     local is_lucky = killer:roll_fortune(rate)
     if is_lucky then
         local point = unit:get_point()
-        point:add_item(self.drop_item_list[i])
+        point:add_item(self.drop_item_list[index])
     end
 
 end
