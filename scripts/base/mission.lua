@@ -126,12 +126,41 @@ end
 function Player.__index:finish_mission( name, is_keep, ... )
     local mission = self:has_mission(name)
     if mission then
+        self:add_finish_mission_times(name)
         mission:finish(...)
         if not is_keep then
             self:remove_mission(name)
         end
     end
 end
+
+--获取玩家完成任务的次数
+function Player.__index:get_finish_mission_times( name )
+    if not self._finish_mission_list then
+        self._finish_mission_list = {}
+    end
+    if not self._finish_mission_list[name] then
+        self._finish_mission_list[name] = 0
+    end
+    return self._finish_mission_list[name]
+end
+
+--设置玩家完成任务的次数
+function Player.__index:set_finish_mission_times( name, times )
+    if not self._finish_mission_list then
+        self._finish_mission_list = {}
+    end
+    if not self._finish_mission_list[name] then
+        self._finish_mission_list[name] = 0
+    end
+    self._finish_mission_list[name] = times
+end
+
+--增加玩家完成任务的次数
+function Player.__index:add_finish_mission_times( name, times )
+    self:set_finish_mission_times(name, self:get_finish_mission_times(name) + (times or 1) )
+end
+
 
 --单位刷新任务
 --  任务名称
