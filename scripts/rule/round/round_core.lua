@@ -84,6 +84,20 @@ function mt:run_special_round(  )
     self.special_round:create(self.last_round, self.current_round)
 end
 
+--暂停回合计时器
+--  暂停/继续
+function mt:pause_round(pause)
+    if not self.current_round then
+        return
+    end
+    local dialog = self.current_round.timerdialog
+    if pause == nil or pause then
+        dialog:pause()
+    else
+        dialog:pause(false)
+    end
+end
+
 --创建战斗区域视野
 function mt:create_battle_fog()
     local rect = Rects['战斗区域']
