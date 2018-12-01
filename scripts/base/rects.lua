@@ -79,4 +79,14 @@ Map_rects['青蛙区域'] = {
     Rect.j_rect('Creep_frog_04'),
 }
 
+Map_rects['螃蟹区域'] = {
+    Rect.j_rect('Sea_35'),
+    Rect.j_rect('Sea_34'),
+    Rect.j_rect('Sea_31'),
+    Rect.j_rect('Sea_30'),
+    Rect.j_rect('Sea_3'),
+}
+
+
+
 return Map_rects

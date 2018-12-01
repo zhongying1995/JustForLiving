@@ -1,1 +1,1 @@
--- require 'rule.creep.revive.螃蟹.'
+require 'rule.creep.revive.螃蟹.螃蟹'
