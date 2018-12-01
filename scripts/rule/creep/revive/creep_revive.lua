@@ -67,7 +67,7 @@ setmetatable(Creep_revive, {__index = function(self, name)
 end})
 
 --初始化一个野怪单位的复活
-function Creep_revive:init_creep_revivie(unit)
+function Creep_revive:init_creep_revive(unit)
     local type_data = self[unit:get_id()]
 
     if type(type_data) == 'function' then
@@ -100,7 +100,7 @@ function Creep_revive:save_default_creeps()
         :ipairs()
     do
         
-        self:init_creep_revivie(u)
+        self:init_creep_revive(u)
     end
 
 end
