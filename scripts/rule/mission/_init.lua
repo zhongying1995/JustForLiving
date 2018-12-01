@@ -1,1 +1,1 @@
-require 'rule.mission.青蛙任务'
+require 'rule.mission.青蛙._init'

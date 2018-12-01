@@ -3,10 +3,13 @@ local Mission = require 'base.mission'
 
 local mt = Mission.register('青蛙任务'){
     max_frog_count = 10,
+    max_mission_times = 10,
 }
 
 function mt:on_start()
-    self.owner:send_msg(('你接收了[%s]，请击杀%s个青蛙！'):format(self.name, self.max_frog_count))
+    self.owner:send_msg(('[|cffff9900%s|r/|cffff9900%s|r]你接收了[%s]，请击杀%s个青蛙！') 
+            :format(self.max_mission_times, self.owner:get_finish_mission_times(self.name), self.name, self.max_frog_count),
+        10)
 end
 
 function mt:on_update()
@@ -27,6 +30,7 @@ function mt:on_update()
 end
 
 function mt:on_finish()
-    local msg = ('恭喜你完成了[%s]！牛逼！！！'):format(self.name)
+    local msg = ('[|cffff9900%s|r/|cffff9900%s|r]恭喜你完成了[%s]！牛逼！！！')
+        :format(self.max_mission_times, self.owner:get_finish_mission_times(self.name), self.name)
     self.player:send_msg(msg)
 end
