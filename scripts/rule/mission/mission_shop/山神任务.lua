@@ -1,15 +1,12 @@
 local mt = ac.unit_button['山神任务']{
-    war3_id = 'h25B',
+    war3_id = 'h50A',
+    duration = 30,
+    skill_name = '弑神之力',
 }
 
 function mt:on_click()
     local unit = self.clicker
-    
-    local trg = unit:event '单位-杀死单位'(function(trg, killer, killed)
-        if killed:get_id() == 'h400' then
-            trg:remove()
-            unit:add_item('神石')
-        end
-    end)
-
+    unit:add_buff('弑神之力'){
+        time = self.duration
+    }
 end

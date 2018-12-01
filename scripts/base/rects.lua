@@ -87,6 +87,7 @@ Map_rects['螃蟹区域'] = {
     Rect.j_rect('Sea_3'),
 }
 
+Map_rects['山神'] = Rect.j_rect('Mountain_god')
 
 
 return Map_rects
