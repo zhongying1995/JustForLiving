@@ -149,6 +149,7 @@ end
 
 function mt:destory()
     self:remove()
+    ac.game:event_notify('游戏-选择英雄结束')
     --选择英雄结束，即将开始游戏回合逻辑
     local Round_core = require 'rule.round.round_core'
     Round_core:init()
