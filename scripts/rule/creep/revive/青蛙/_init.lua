@@ -1,1 +1,0 @@
-require 'rule.creep.revive.青蛙.青蛙'
