@@ -1,0 +1,2 @@
+require 'rule.mission.mission_shop.山神任务'
+require 'rule.mission.mission_shop.青蛙任务'
