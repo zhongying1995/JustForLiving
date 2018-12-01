@@ -4,7 +4,8 @@ local Debug_command = Router.debug_command
 local mt = Debug_command.__index
 
 mt['item'] = {
-    action = function (player, name, n)
+    debug = true,
+    action = function (self, player, name, n)
         local u = player:get_selecting_unit()
         if u then
             local n = n or 1
@@ -21,7 +22,8 @@ mt['item'] = {
 }
 
 mt['minion'] = {
-    action = function ( player, index, number )
+    debug = true,
+    action = function (self,  player, index, number )
         local index = index or 1
         local number = number or 1
         local name = '普通进攻怪-第' .. index .. '波'
@@ -29,5 +31,14 @@ mt['minion'] = {
         for i = 1, number do
             ac.player[12]:create_unit(name, point)
         end
+    end
+}
+
+mt['pause'] = {
+    debug = true,
+    action = function(self)
+        self.pause = not self.pause
+        local Round_core = require 'rule.round.round_core'
+        Round_core:pause_round(self.pause)
     end
 }
