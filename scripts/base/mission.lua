@@ -59,9 +59,13 @@ end
 
 --任务开始
 function mt:start()
+    local is_allow = true
+    local reason
     if self.on_start then
-        self:on_start()
+        --@on_start - false:不能再添加该任务
+        is_allow, reason = self:on_start()
     end
+    return is_allow == nil or is_allow, reason
 end
 
 --任务更新
@@ -107,7 +111,16 @@ function Player.__index:add_mission( name )
     self._mission_list[name] = mission
     mission.owner = self
     mission.player = self
-    mission:start()
+    local is_allow, reason = mission:start()
+    if not is_allow then
+        local msg = ('获取任务[|cffff0000%s|r]失败'):format(name)
+        if reason then
+            msg = msg .. ':' .. tostring(reason)
+        end
+        self:send_msg(msg, 5)
+        mission:remove()
+        return
+    end
     return mission
 end
 
