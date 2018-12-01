@@ -86,7 +86,7 @@ function mt:remove(...)
     if self.on_remove then
         self:on_remove(...)
     end
-    self.player._mission_list[name] = nil
+    self.player._mission_list[self.name] = nil
 end
 
 
