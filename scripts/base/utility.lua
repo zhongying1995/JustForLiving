@@ -1,5 +1,6 @@
 local color_styles = {
-    ['reward'] = '|cffff9900'
+    ['reward'] = '|cffff9900',
+    ['warn'] = '|cffff0000',
 }
 
 function ac.get_color_string(str, type)
