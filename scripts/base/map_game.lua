@@ -16,5 +16,19 @@ function mt:get_round(type)
     return self._round[type]
 end
 
+--获取控制玩家的电脑盟友
+function mt:get_ally_com_player()
+    return ac.player[1]:get_ally_com_player()
+end
+
+--获取进攻怪玩家
+function mt:get_invade_creep_player()
+    return ac.player[1]:get_invade_creep_player()
+end
+
+--获得副本怪玩家
+function mt:get_wild_creep_player()
+    return ac.player[1]:get_wild_creep_player()
+end
 
 return Map_game
