@@ -89,5 +89,18 @@ Map_rects['螃蟹区域'] = {
 
 Map_rects['山神'] = Rect.j_rect('Mountain_god')
 
+Map_rects['龙王区域'] = {
+    Rect.j_rect('Dragon_1'),
+    Rect.j_rect('Dragon_2'),
+}
+
+Map_rects['龙复活区域'] = {
+    --黑龙
+    Rect.j_rect('Dragon_3'),
+    --红龙
+    Rect.j_rect('Dragon_4'),
+    --绿龙
+    Rect.j_rect('Dragon_5'),
+}
 
 return Map_rects
