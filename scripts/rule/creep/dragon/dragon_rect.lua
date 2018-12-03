@@ -166,6 +166,7 @@ function mt:init(  )
             if unit:has_item('通行证') then
                 text = ac.get_color_string('通行证没收了！', 'reward')
                 self:hero_enter()
+                unit:remove_item('通行证')
             else
                 text = ac.get_color_string('无通行者，乱闯者死！', 'warn')
                 local face = unit:get_facing()
