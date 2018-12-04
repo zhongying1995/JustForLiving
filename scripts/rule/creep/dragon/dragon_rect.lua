@@ -21,21 +21,25 @@ mt.dragon_datas = {
         ['birth'] = Rects['龙复活区域'][1]:get_point(),
         ['name'] = '黑龙王',
         ['face'] = 60,
+        ['item'] = '智慧',
     },
     ['greed'] = {
         ['birth'] = Rects['龙复活区域'][3]:get_point(),
         ['name'] = '绿龙王',
         ['face'] = 120,
+        ['item'] = '狂暴',
     },
     ['red'] = {
         ['birth'] = Rects['龙复活区域'][2]:get_point(),
         ['name'] = '红龙王',
         ['face'] = 90,
+        ['item'] = '神灵',
     },
     ['king'] = {
         ['birth'] = Rects['龙复活区域'][2]:get_point(),
         ['name'] = '龙皇',
         ['face'] = 90,
+        ['item'] = '龙皇之力',
     },
 }
 
@@ -191,9 +195,12 @@ function mt:init(  )
             }
         end
     end)
-    self.unit_dead_trg = ac.game:event '单位-死亡'(function ( trg, unit )
+    self.unit_dead_trg = ac.game:event '单位-死亡'(function ( trg, unit, killer )
         if unit.is_dragon_creep then
             self:remove_candidate_dragon(unit)
+            local item_name = self.dragon_datas[unit.dragon_type]['item']
+            local it = unit:get_point():add_item(item_name)
+            it:set_player(killer:get_owner())
             local u = self:get_candidate_dragon()
             --没有候选的战斗龙王，创建新的候选龙王
             if not u then
