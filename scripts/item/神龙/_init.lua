@@ -1,0 +1,5 @@
+require 'item.神龙.智慧'
+require 'item.神龙.狂暴'
+require 'item.神龙.神灵'
+require 'item.神龙.龙皇之力'
+require 'item.神龙.真龙皇之翼'
