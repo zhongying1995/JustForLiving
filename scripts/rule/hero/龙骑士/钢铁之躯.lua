@@ -35,7 +35,7 @@ local mt = ac.buff['龙骑士-钢铁之躯']{
 function mt:on_add()
     local unit = self.target
     local skill = self.skill
-    self.trg = unit:event '单位-即将受到伤害'(function(trg, damage)
+    self.trg = unit:event '单位-即将受到伤害效果'(function(trg, damage)
         unit:add_buff('龙骑士-钢铁之躯-恢复'){
             skill = skill,
             cover_max = skill.layer,

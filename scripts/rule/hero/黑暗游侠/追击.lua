@@ -35,7 +35,7 @@ local mt = ac.buff['黑暗游侠-追击']{
 function mt:on_add()
     local unit = self.target
     local skill = self.skill
-    self.trg = unit:event '单位-即将造成伤害'(function(trg, damage)
+    self.trg = unit:event '单位-即将造成伤害效果'(function(trg, damage)
         if not damage:is_attack() then
             return
         end

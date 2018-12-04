@@ -10,7 +10,7 @@ local mt = ac.skill['暗杀精通']{
 function mt:on_add()
     local unit = self.owner
     self.ef = unit:add_effect(self.effect_model, 'weapon')
-    self.trg = unit:event '单位-即将造成伤害'(function(trg, damage)
+    self.trg = unit:event '单位-即将造成伤害-乘除'(function(trg, damage)
         if damage:is_attack() then
             if self.rate >= math.random(0, 100) then
                 local target = damage.target

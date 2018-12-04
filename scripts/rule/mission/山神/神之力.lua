@@ -10,7 +10,7 @@ local mt = ac.skill['山神之力']{
 function mt:on_add(  )
     local unit = self.owner
     self.buff = unit:add_buff(self.buff_name){}
-    self.damage_trg = unit:event '单位-即将受到伤害'(function ( trg, damage )
+    self.damage_trg = unit:event '单位-即将造成伤害-乘除'(function ( trg, damage )
         local source = damage.source
         if source:find_buff(self.debuff_name) then
             self.buff:disable()
