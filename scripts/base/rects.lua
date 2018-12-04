@@ -103,4 +103,29 @@ Map_rects['龙复活区域'] = {
     Rect.j_rect('Dragon_5'),
 }
 
+Map_rects['野外'] = {
+    Rect.j_rect('Field_1'),
+    Rect.j_rect('Field_2'),
+    Rect.j_rect('Field_3'),
+    Rect.j_rect('Field_4'),
+    Rect.j_rect('Field_5'),
+    Rect.j_rect('Field_6'),
+    Rect.j_rect('Field_7'),
+    Rect.j_rect('Field_8'),
+}
+
+Map_rects['花园'] = {
+    Rect.j_rect('Garden_1'),
+    Rect.j_rect('Garden_2'),
+    Rect.j_rect('Garden_3'),
+    Rect.j_rect('Garden_4'),
+    Rect.j_rect('Garden_5'),
+    Rect.j_rect('Garden_6'),
+}
+
+Map_rects['神树区域'] = Rect.j_rect('God_tree')
+
+
+Map_rects['农场区域'] = Rect.j_rect('Farm')
+
 return Map_rects
