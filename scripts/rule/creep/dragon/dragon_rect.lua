@@ -151,6 +151,7 @@ end
 function mt:create_king_dragon()
     local u = self:create_type_dragon('king')
     u.is_king_dragon = true
+    self.is_king_dragon_show = true
     return u
 end
 
@@ -172,7 +173,7 @@ function mt:init(  )
                 self:hero_enter()
                 unit:remove_item('通行证')
             else
-                text = ac.get_color_string('无通行者，乱闯者死！', 'warn')
+                text = ac.get_color_string('无通行证，乱闯者死！', 'warn')
                 local face = unit:get_facing()
                 local point = unit:get_point()
                 while(self.region<point)
@@ -201,10 +202,15 @@ function mt:init(  )
             local item_name = self.dragon_datas[unit.dragon_type]['item']
             local it = unit:get_point():add_item(item_name)
             it:set_player(killer:get_owner())
-            local u = self:get_candidate_dragon()
-            --没有候选的战斗龙王，创建新的候选龙王
-            if not u then
-                self:create_default_dragon()
+            if self.is_king_dragon_show then
+                self.is_king_dragon_show = false
+                ac.wait(30*1000, function (  )
+                    local u = self:get_candidate_dragon()
+                    --没有候选的战斗龙王，创建新的候选龙王
+                    if not u then
+                        self:create_default_dragon()
+                    end
+                end)
             end
         end
     end)
