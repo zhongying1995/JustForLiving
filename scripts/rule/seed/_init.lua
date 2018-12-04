@@ -1,0 +1,1 @@
+require 'rule.seed.seed_types._init'
