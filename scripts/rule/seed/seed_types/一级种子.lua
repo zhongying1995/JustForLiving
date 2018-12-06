@@ -2,7 +2,7 @@ ac.unit['一级种子']{
     war3_id = 'h606',
     fruit = 'I12X',
     skill_names = '生长',
-    grow_duration = 10,
+    grow_duration = 60,
 }
 
 local mt = ac.item['一级种子']{
@@ -17,5 +17,5 @@ local skill = ac.skill['一级种子']{
 function skill:on_effect(  )
     local point = self.target
     local unit = self.owner
-    ac.player[16]:create_unit('一级种子', point)
+    ac.player[16]:create_unit(self.seed, point)
 end

@@ -1,1 +1,7 @@
 require 'rule.seed.seed_types.一级种子'
+require 'rule.seed.seed_types.二级种子'
+require 'rule.seed.seed_types.三级种子'
+require 'rule.seed.seed_types.四级种子'
+require 'rule.seed.seed_types.五级种子'
+require 'rule.seed.seed_types.六级种子'
+require 'rule.seed.seed_types.七级种子'

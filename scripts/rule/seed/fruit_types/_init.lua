@@ -1,1 +1,7 @@
 require 'rule.seed.fruit_types.一级果实'
+require 'rule.seed.fruit_types.二级果实'
+require 'rule.seed.fruit_types.三级果实'
+require 'rule.seed.fruit_types.四级果实'
+require 'rule.seed.fruit_types.五级果实'
+require 'rule.seed.fruit_types.六级果实'
+require 'rule.seed.fruit_types.七级果实'
