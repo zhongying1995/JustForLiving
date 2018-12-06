@@ -1,7 +1,8 @@
 local mt = ac.skill['生长']{
     grow_size = 1.5,
     grow_duration = 30,
-    fruit = '',
+    --一级种子
+    fruit = 'I12X',
 }
 
 function mt:on_add(  )
@@ -9,6 +10,7 @@ function mt:on_add(  )
     local duration = unit.grow_duration or self.grow_duration
     local size = unit:get_size()
     local max_size = unit.grow_size or self.grow_size
+    local fruit = unit.fruit or self.fruit
 
     unit:add_buff('生长'){
         skill = self,
@@ -19,7 +21,10 @@ function mt:on_add(  )
 end
 
 function mt:on_remove(  )
-    
+    local unit = self.owner
+    if unit:find_buff('生长') then
+        unit:remove_buff('生长')
+    end
 end
 
 
@@ -32,7 +37,6 @@ local buff_mt = ac.buff['生长']{
 function buff_mt:on_add(  )
     local unit = self.target
     unit:add_effect(self.model):remove()
-    unit:transform_dummy()
     local size = self.size / 2
     unit:set_size(size)
     local interval_size = (self.grow_size - size) / self.duration
@@ -41,7 +45,6 @@ function buff_mt:on_add(  )
     end)
     function self.grow_timer.on_remove(  )
         unit:add_effect(self.finish_model):remove()
-        unit:transform_nondummy()
         unit:add_buff('果实'){
             duration = self.duration,
             skill = self.skill,
@@ -67,7 +70,7 @@ function buff_mt_1:on_add(  )
         if order == 'smart' and (who:get_point() * u:get_point()) < self.radius then
             local item = unit:get_point():add_item(unit.fruit)
             item:set_player(unit:get_owner())
-            unit:killed(u)
+            unit:killed()
             self:remove()
         end
     end)
