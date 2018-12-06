@@ -1,0 +1,1 @@
+require 'rule.seed.fruit_types.一级果实'
