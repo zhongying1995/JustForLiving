@@ -83,7 +83,7 @@ function mt:prepare(  )
         time = time + 60
     end
     
-    self.timerdialog:set_time( 10 or time)
+    self.timerdialog:set_time(time)
         :set_title(('第%s回合倒计时：'):format(self.index))
         :set_title_color(255, 0, 0)
         :set_on_expire_listener(function (  )

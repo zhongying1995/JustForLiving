@@ -65,7 +65,7 @@ function mt:prepare()
     self:show_prepare_round_msg()
     self.all_creeps = {}
     local time = self.creep_datas.prepare_time
-    self.timerdialog:set_time( 10 or time)
+    self.timerdialog:set_time(time)
         :set_title('特殊进攻怪')
         :set_title_color(255, 0, 0)
         :set_on_expire_listener(function (  )

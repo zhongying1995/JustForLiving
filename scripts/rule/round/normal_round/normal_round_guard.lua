@@ -63,7 +63,7 @@ function mt:prepare()
     self.state = '创建'
     --生存模式的清怪时间为防守模式的准备时间
     local prepare_time = self.creep_datas.clear_time * 0.5
-    self.timerdialog:set_time(10 or prepare_time)
+    self.timerdialog:set_time(prepare_time)
         :set_title(('第%s回合出兵：'):format(self.index))
         :set_title_color(255, 0, 0)
         :set_on_expire_listener(function (  )
@@ -130,7 +130,7 @@ function mt:create_invades()
                     --创建完所有的进攻怪物了，进入回合下一阶段
                     --生存模式的准备时间为防守模式的结束时间
                     local time = self.creep_datas.prepare_time
-                    self.timerdialog:set_time(10 or prepare_time)
+                    self.timerdialog:set_time(prepare_time)
                             :set_title('回合结束：')
                             :set_title_color(255, 0, 0)
                             :set_on_expire_listener(function (  )
