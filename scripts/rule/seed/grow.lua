@@ -1,5 +1,5 @@
 local mt = ac.skill['生长']{
-    grow_size = 1.5,
+    grow_size = 1,
     grow_duration = 30,
     --一级种子
     fruit = 'I12X',
