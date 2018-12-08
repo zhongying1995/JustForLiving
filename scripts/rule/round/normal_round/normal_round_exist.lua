@@ -39,6 +39,14 @@ mt.state = nil
 --计时器窗口
 mt.timerdialog = nil
 
+--回合奖励
+mt.reward_gold = 1000
+mt.reward_lumbers = {
+    1,
+    2,
+    3,
+}
+
 
 --回合初始化->回合创建->回合准备->回合开始->回合结束->回合创建
 
@@ -245,19 +253,29 @@ end
 
 --回合完成，创建回合奖励
 function mt:award(  )
-    Player.self:send_msg('国家奖励你一个女朋友，快去领取吧！')
+    for i = 1, ac.cpn do
+        local p = ac.player.force[1][i]
+        if p:is_player() then
+            local gold = self.reward_gold * self.index
+            p:add_gold(gold)
+            local lumber = self.reward_lumbers[self.index/10] or 0
+            p:add_lumber(lumber)
+        end
+    end
 end
 
 --回合完成，进行回合惩罚
 function mt:mete_out_punishment()
-    Player.self:send_msg('没有在有限时间内击杀所有的怪物，怪物得到增强！！')
-    for _, u in pairs(self.remainder_creeps) do
-        if u:is_alive() then
-            u:add_attack(u:get_attack())
-            u:add_life(u:get_max_life())
-            u:add_max_life(u:get_max_life())
-            u:add_size(0.5)
-            u:add_color(0, -50, -50)
+    if #self.remainder_creeps > 0 then
+        Player.self:send_msg('没有在有限时间内击杀所有的怪物，怪物得到增强！！', 10)
+        for _, u in pairs(self.remainder_creeps) do
+            if u:is_alive() then
+                u:add_attack(u:get_attack())
+                u:add_life(u:get_max_life())
+                u:add_max_life(u:get_max_life())
+                u:add_size(0.5)
+                u:add_color(0, -50, -50)
+            end
         end
     end
 end
