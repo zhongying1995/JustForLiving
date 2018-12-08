@@ -123,9 +123,9 @@ Map_rects['花园'] = {
     Rect.j_rect('Garden_6'),
 }
 
-Map_rects['神树区域'] = Rect.j_rect('God_tree')
+Map_rects['神树'] = Rect.j_rect('God_tree')
 
 
-Map_rects['农场区域'] = Rect.j_rect('Farm')
+Map_rects['农场'] = Rect.j_rect('Farm')
 
 return Map_rects
