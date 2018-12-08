@@ -1,4 +1,4 @@
-require 'rule.mission.山神.神之力'
+require 'rule.mission.山神.山神之力'
 require 'rule.mission.山神.弑神之力'
 require 'rule.mission.山神.山神'
 require 'rule.mission.山神.init'
