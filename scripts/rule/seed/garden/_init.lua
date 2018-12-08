@@ -1,4 +1,5 @@
-local Garden = require 'rule.seed.garden.farmer'
+require 'rule.seed.garden.farmer'
+require 'rule.seed.garden.芝麻开门'
 local Garden = require 'rule.seed.garden.garden'
 
 Garden:init('farmer')
