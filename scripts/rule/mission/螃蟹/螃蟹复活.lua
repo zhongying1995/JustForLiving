@@ -14,13 +14,22 @@ local mt = Creep_revive['螃蟹']{
 
     max_move_speed = 100,
 
+    base_extra_life = 10,
+
     mission_name = '螃蟹任务',
 
     revive_callback = function(self, unit)
         if not self.move_speed then
             self.move_speed = self.base_move_speed
         end
+        if not self.extra_life then
+            self.extra_life = self.base_extra_life
+        end
+
         unit:add_move_speed(self.move_speed)
+        unit:add_max_life(self.extra_life)
+
+        self.extra_life = self.extra_life + self.base_extra_life
         if self.move_speed < self.max_move_speed then
             self.move_speed = self.move_speed + self.base_move_speed
         end
