@@ -10,10 +10,20 @@ local mt = Creep_revive['青蛙']{
 
     revive_time = 10,
 
+    base_move_speed = 5,
+
+    max_move_speed = 100,
+
     mission_name = '青蛙任务',
 
     revive_callback = function(self, unit)
-        
+        if not self.move_speed then
+            self.move_speed = self.base_move_speed
+        end
+        unit:add_move_speed(self.move_speed)
+        if self.move_speed < self.max_move_speed then
+            self.move_speed = self.move_speed + self.base_move_speed
+        end
     end,
 
     death_callback = function(self, unit, killer)

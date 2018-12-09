@@ -7,7 +7,7 @@ local function init(  )
 
     local player_count = Player.count_alive()
     local rate = 4
-    local base_number = 5
+    local base_number = 10
     local rcts = Rects['青蛙区域']
     for i = 1, base_number+rate*player_count do
         local point = rcts[math.random(1, #rcts)]:get_random_point()
