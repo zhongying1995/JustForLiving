@@ -98,6 +98,15 @@ function mt:pause_round(pause)
     end
 end
 
+--直接开始回合
+function mt:run_round(  )
+    if not self.current_round or self.current_round.state ~= '准备' then
+        return
+    end
+    local dialog = self.current_round.timerdialog
+    dialog:quick_run_expire()
+end
+
 --创建战斗区域视野
 function mt:create_battle_fog()
     local rect = Rects['战斗区域']
