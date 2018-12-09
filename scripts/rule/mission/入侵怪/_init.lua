@@ -1,0 +1,1 @@
+require 'rule.mission.入侵怪.普通入侵怪'
