@@ -1,6 +1,7 @@
 local mt = ac.item['五级果实']{
     war3_id = 'I131',
     all_attr = 50,
+    is_fruit = true,
 }
 
 function mt:on_use(  )

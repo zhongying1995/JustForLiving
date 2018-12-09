@@ -7,6 +7,7 @@ ac.unit['七级种子']{
 
 local mt = ac.item['七级种子']{
     war3_id = 'I12W',
+    is_seed = true,
 }
 
 
