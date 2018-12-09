@@ -42,3 +42,11 @@ mt['pause'] = {
         Round_core:pause_round(self.pause)
     end
 }
+
+mt['start'] = {
+    debug = true,
+    action = function(self)
+        local Round_core = require 'rule.round.round_core'
+        Round_core:run_round()
+    end
+}
