@@ -41,7 +41,7 @@ end
 function mt:on_finish()
     local msg = ('[|cffff9900%s|r/|cffff9900%s|r]恭喜你完成了[%s]！')
         :format(self.max_mission_times, self.owner:get_finish_mission_times(self.name), self.name)
-    self.player:send_msg(msg)
+    self.player:send_msg(msg, 5)
     self:reward()
 end
 
