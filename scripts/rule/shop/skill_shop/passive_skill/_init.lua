@@ -1,3 +1,5 @@
 require 'rule.shop.skill_shop.passive_skill.硬化皮肤'
 require 'rule.shop.skill_shop.passive_skill.闪避'
 require 'rule.shop.skill_shop.passive_skill.赏金猎人'
+require 'rule.shop.skill_shop.passive_skill.致命一击'
+require 'rule.shop.skill_shop.passive_skill.重击'

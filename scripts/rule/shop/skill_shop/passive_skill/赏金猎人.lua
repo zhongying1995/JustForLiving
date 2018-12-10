@@ -28,6 +28,7 @@ local buff = ac.buff['赏金猎人']{
 function buff:on_add(  )
     local unit = self.target
     local player = unit:get_owner()
+    local skill = self.skill
     self.kill_trg = unit:event '单位-杀死单位'(function ( trg, killer, killed )
         player:add_gold_text(skill.gold, unit)
         if skill.lumber_rate > 0 then
