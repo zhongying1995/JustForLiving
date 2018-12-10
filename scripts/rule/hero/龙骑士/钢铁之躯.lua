@@ -18,16 +18,6 @@ function mt:on_disable()
     unit:remove_buff('龙骑士-钢铁之躯')
 end
 
-function mt:on_upgrade()
-    if self:is_enable() then
-        local unit = self.owner
-        unit:remove_buff('龙骑士-钢铁之躯')
-        unit:add_buff('龙骑士-钢铁之躯'){
-            skill = self,
-        }
-    end
-end
-
 local mt = ac.buff['龙骑士-钢铁之躯']{
 
 }
@@ -36,6 +26,7 @@ function mt:on_add()
     local unit = self.target
     local skill = self.skill
     self.trg = unit:event '单位-即将受到伤害效果'(function(trg, damage)
+        print('龙骑士-钢铁之躯', skill, skill.recovery)
         unit:add_buff('龙骑士-钢铁之躯-恢复'){
             skill = skill,
             cover_max = skill.layer,

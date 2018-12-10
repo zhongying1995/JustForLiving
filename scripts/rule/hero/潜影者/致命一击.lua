@@ -7,15 +7,6 @@ local mt = ac.skill['致命一击']{
     passive = true,
 }
 
-function mt:on_upgrade()
-    if self:is_enable() then
-        local unit = self.owner
-        unit:remove_buff('潜影者-致命一击')
-        unit:add_buff('潜影者-致命一击'){
-            skill = self,
-        }
-    end
-end
 
 function mt:on_enable()
     local unit = self.owner

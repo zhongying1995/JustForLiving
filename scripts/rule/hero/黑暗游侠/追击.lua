@@ -16,16 +16,6 @@ function mt:on_disable()
     unit:remove_buff('黑暗游侠-追击')
 end
 
-function mt:on_upgrade()
-    if self:is_enable() then
-        local unit = self.owner
-        unit:remove_buff('黑暗游侠-追击')
-        unit:add_buff('黑暗游侠-追击'){
-            skill = self,
-        }
-    end
-end
-
 
 local mt = ac.buff['黑暗游侠-追击']{
     effect_model = [[Abilities\Spells\Other\BlackArrow\BlackArrowMissile.mdl]],
