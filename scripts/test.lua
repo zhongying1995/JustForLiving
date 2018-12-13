@@ -510,12 +510,47 @@ local function check_all_item()
 
 end
 
+local function check_dazpi(  )
+    ac.wait(5*1000, function (  )
+        print('获取服务器存档:', ac.player[1]:is_enable_get_server())
+        print('公会名称：', tostring(ac.player[1]:get_guild_name()))
+        print('公会职责', ac.player[1]:get_guild_role())
+        print('获取地图等级:', ac.player[1]:get_map_level())
+        print('获取地图等级排名:', ac.player[1]:get_map_level_rank())
+        print('是否从rpg大厅来的:', tostring(Map_game.is_rpg_robby()))
+        print('游戏开局时间:', Map_game.get_game_stated_time())
+        ac.wait(5*1000, function ( )
+            print('游戏开局时间:', Map_game.get_game_stated_time())
+        end)
+    end)
+end
 
 if not base.release then
     -- test_model()
     ac.player[1]:add_gold(10000)
     -- check_all_item()
     -- print('移速：', ac.player[1].hero:get_move_speed())
+    local Player = Router.player
+    -- function Player.__index:roll_fortune()
+    --     return true
+    -- end
+    if ac.player[1].hero  then
+        local hero = ac.player[1].hero
+        hero:add_skill('赏金猎人'){}
+        local skill = ac.player[1].hero:find_skill('钢铁之躯')
+        if skill then
+            skill:add_level()
+        end
+        if not Map_game._hero_move then
+            Map_game._hero_move = true
+            ac.player[1].hero:event '单位-发布双击指令'(function ( trg, u, order, point )
+                u:set_point(point)
+            end)
+        end
+    end
+    check_dazpi()
+    -- ac.player[1].hero:add_restriction('无敌')
+    -- ac.player[1].hero:add_ability('AZ06')
 end
 
 --暂时这样吧
