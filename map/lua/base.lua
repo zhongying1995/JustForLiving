@@ -9,9 +9,6 @@ base.release = not pcall(require, 'lua.currentpath')
 --版本号
 base.version = '0.01'
 
---重载print,自动转换编码
-print = console.write
-
 --打开控制台
 if not base.release then
 	console.enable = true
@@ -19,6 +16,9 @@ if not base.release then
 else
 	print('发行版本')
 end
+
+--重载print,自动转换编码
+print = console.write
 
 --将句柄等级设置为0(地图中所有的句柄均使用table封装)
 runtime.handle_level = 0
@@ -42,7 +42,7 @@ end
 if base.release then
 	package.path = [[\?.lua;scripts\?.lua;]] .. package.path
 else
-	-- package.path = [[G:\War3\Warcraft3\JustForLiving\?.lua;]] .. package.path
+	package.path = [[G:\War3\Warcraft3\JustForLiving\?.lua;]] .. package.path
 	print('当前版本为 测试版')
 end
 
