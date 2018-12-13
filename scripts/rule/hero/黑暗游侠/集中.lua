@@ -8,6 +8,7 @@ function mt:on_effect()
     local unit = self.owner
     local target = self.target
 
+    unit:issue_order('attack', target)
     unit:add_buff('集中-攻击'){
         skill = self,
         time = self.time,
