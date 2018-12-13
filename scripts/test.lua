@@ -552,13 +552,3 @@ if not base.release then
     -- ac.player[1].hero:add_restriction('无敌')
     -- ac.player[1].hero:add_ability('AZ06')
 end
-
---暂时这样吧
-print('test model!!')
-ac.wait(1000, function()
-    print('选择游戏难度', jass.Player(0))
-    if not Map_game.test then
-        Map_game.test = true
-        ac.game:event_notify('游戏-选择难度')
-    end
-end)
